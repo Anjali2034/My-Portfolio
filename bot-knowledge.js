@@ -97,7 +97,7 @@ window.BOT_KB = {
       id: "confidential-numbers", tier: 0,
       strong: ["exact revenue", "how much revenue", "revenue in rupees", "actual revenue", "how much money", "absolute numbers", "ad spend", "ad budget", "how much budget"],
       terms: ["rupees", "inr", "budget"],
-      text: "Anjali keeps her former employers' internal revenue and spend figures confidential, so she shares results as multiples and percentages: 2x monthly quiz revenue, 6x signups on the same budget, and over 80% lower cost per signup.",
+      text: "Anjali keeps her former employers' internal revenue and budget figures confidential, so she shares results as multiples and unit costs: 2x monthly quiz revenue, 6x signups on the same budget, and cost per signup down from ₹600 to ₹107.",
       links: ["work"],
       next: ["How did she grow signups 6x?", "Biggest win?"]
     },
@@ -316,7 +316,7 @@ window.BOT_KB = {
       id: "fmge", tier: 1, brag: true,
       strong: ["fmge", "6x", "signups 6x", "whatsapp community", "whatsapp communities", "whatsapp channel", "whatsapp group", "group admin", "admin"],
       terms: ["acquisition", "signup", "sign up", "growth", "grow", "marketing", "channel", "community", "cost per signup", "cps", "cac"],
-      text: "FMGE is the licensing exam for Indians who studied medicine abroad, and those students already gather in WhatsApp groups by country and university. Reflexprep's new FMGE platform had stalled below 50 signups a month on paid ads, so Anjali partnered with the admins of 20+ of these groups, offering a fee plus free mock tests and exclusive content for their members. On the same budget, signups grew 6x to 300+ a month and cost per signup fell by over 80%.",
+      text: "FMGE is the licensing exam for Indians who studied medicine abroad, and those students already gather in WhatsApp groups by country and university. Reflexprep's new FMGE platform had stalled below 50 signups a month on paid ads, so Anjali partnered with the admins of 20+ of these groups, offering a fee plus free mock tests and exclusive content for their members. On the same budget, signups grew 6x to 300+ a month, cost per signup fell from ₹600 to ₹107, and monthly revenue grew 5x.",
       links: ["fmge"],
       next: ["How does she run experiments?", "Her role vs the team?"]
     },
