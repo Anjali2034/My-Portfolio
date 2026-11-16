@@ -1,44 +1,4 @@
-/*
-  "Ask about Anjali" — the bot's knowledge file.
-  ------------------------------------------------
-  Edit answers here; no other file needs to change.
-
-  Each topic has:
-    id      a short name (used by tests)
-    tier    0 = sensitive (failure, weakness, exit, salary...). Checked with priority,
-              so these can never be answered by a "brag" topic by mistake.
-            1 = normal topic.  2 = small talk.
-    brag    true for success stories. If the question contains negative words
-            ("dropped", "wrong", "worst"...), these topics are held back.
-    strong  words/phrases that almost certainly mean this topic (weight 3)
-    terms   words/phrases that usually mean this topic (weight 2)
-    weak    context words that only help break ties (weight 1)
-            A word matches the start of a word in the question: "hack" matches "hackathon".
-            Words of 3 letters or fewer must match exactly, and so must words ending in "$" ("lead$").
-            Phrases (with spaces) match as phrases. Small typos are forgiven on longer words.
-    exact   (optional) whole questions that mean this topic on their own, e.g. "about" or "experience"
-    text    the answer. Voice: an assistant talking about Anjali. Confident, warm, 2–3 sentences.
-    links   buttons under the answer (names from LINKS below)
-    next    suggested follow-up questions (shown as chips)
-
-  House rules (from Anjali):
-    - No exact company revenue or ad-spend figures. Use multiples or percentages.
-    - No salary history or expectations.
-    - Proximics / YC only if asked directly.
-    - Never criticise former employers or colleagues.
-    - Never invent details. If it's not here, the fallback sends people to Anjali.
-    - Never name managers, colleagues or references.
-    - Never share former employers' internal details (user counts, revenue, strategy) beyond these notes.
-    - Never compare Anjali negatively with other candidates, or criticise other companies' products
-      beyond what the case studies say.
-    - Never promise anything on her behalf (start dates beyond "immediately", or accepting a role).
-    - No CGPA or marks: send people to her directly.
-    - Negative questions get honest, confident answers that show what she learnt. No exaggeration.
-*/
 window.BOT_KB = {
-  // Question log: the Google Apps Script web-app URL (see question-log/SETUP.md).
-  // Leave empty ("") to turn logging off. Nothing is logged when the site runs locally,
-  // or on a device where the site was opened once with ?nolog at the end of the URL.
   logUrl: "",
 
   greeting: "Hi! I'm Anjali's portfolio assistant. Ask me about her work, results or availability.",
@@ -56,8 +16,6 @@ window.BOT_KB = {
     links: ["email", "whatsapp"],
     next: ["Quick intro", "Availability & location"]
   },
-
-  // Words that signal a negative question. Success stories ("brag") are held back when these appear.
   negative: ["drop$", "dropped$", "declin", "fell$", "fail", "mistake", "wrong", "worst", "bad$",
              "regret", "lost$", "lose$", "struggl", "setback", "weak", "didnt work", "did not work", "went wrong"],
 
@@ -85,7 +43,6 @@ window.BOT_KB = {
   },
 
   topics: [
-    /* ───────────── Tier 0: sensitive — always checked first ───────────── */
     {
       id: "failure-2", tier: 0,
       strong: ["another failure", "second failure", "other failure", "one more failure", "failed experiment", "experiment that failed", "experiment failed", "experiment fail", "experiment that didnt", "test that failed", "missed target"],
@@ -192,8 +149,6 @@ window.BOT_KB = {
       links: ["email"],
       next: ["Quick intro", "Biggest win?"]
     },
-
-    /* ───────────── Tier 1: recruiter logistics ───────────── */
     {
       id: "logistics", tier: 1,
       strong: ["availab", "notice period", "join immediately", "when can", "start date", "relocat", "where is she based", "where are you based", "based in", "remote", "hybrid", "in office", "location"],
@@ -267,8 +222,6 @@ window.BOT_KB = {
       links: ["resume", "linkedin", "github"],
       next: ["Quick intro", "Availability & location"]
     },
-
-    /* ───────────── Tier 1: story ───────────── */
     {
       id: "intro", tier: 1, brag: true,
       exact: ["about", "bio", "about me", "profile", "product", "pm"],
@@ -359,8 +312,6 @@ window.BOT_KB = {
       text: "She wants to own a product area end to end: find the problem, ship the solution and be accountable for the number it moves. In her first PM role she wants to go deeper on user research and on sharper prioritisation calls with engineering and design.",
       next: ["What roles is she looking for?", "Why product management?"]
     },
-
-    /* ───────────── Tier 1: work ───────────── */
     {
       id: "fmge", tier: 1, brag: true,
       strong: ["fmge", "6x", "signups 6x", "whatsapp community", "whatsapp communities", "whatsapp channel", "whatsapp group", "group admin", "admin"],
@@ -428,8 +379,6 @@ window.BOT_KB = {
       links: ["quiz"],
       next: ["Tell me about a disagreement", "A failure she learned from", "Her role vs the team?"]
     },
-
-    /* ───────────── Tier 1: skills ───────────── */
     {
       id: "data", tier: 1, brag: true,
       strong: ["sql", "work with data", "data analysis", "analytics", "analyse", "analyze", "analytical", "dashboarding", "excel"],
@@ -470,8 +419,6 @@ window.BOT_KB = {
       links: ["quiz"],
       next: ["What would she do differently?", "How does she prioritise?"]
     },
-
-    /* ───────────── Tier 1: projects & case studies ───────────── */
     {
       id: "scamcheck", tier: 1, brag: true,
       strong: ["scamcheck", "scam check", "scam", "fraud", "upi"],
@@ -537,8 +484,6 @@ window.BOT_KB = {
       links: ["blinkit"],
       next: ["PW case study?", "Shiprocket case study?"]
     },
-
-    /* ───────────── Tier 1: interview stories ───────────── */
     {
       id: "story-data", tier: 1, brag: true,
       strong: ["data driven decision", "decision with data", "data decision", "used data", "data to decide", "against the obvious", "data told", "made with data", "decision you made", "decision she made", "data driven", "surprising insight", "counterintuitive", "insight from data"],
@@ -603,8 +548,6 @@ window.BOT_KB = {
       links: ["work"],
       next: ["A failure she learned from", "What would she do differently?"]
     },
-
-    /* ───────────── Tier 1: product thinking & personal ───────────── */
     {
       id: "fav-product", tier: 1,
       strong: ["favourite product", "favorite product", "product you love", "product she loves", "product do you like", "best product", "love using", "admire", "duolingo", "product do you love", "product do you like", "product you like", "love and why"],
@@ -660,8 +603,6 @@ window.BOT_KB = {
       links: ["github"],
       next: ["Things she built", "Tools she uses?"]
     },
-
-    /* ───────────── Tier 2: small talk ───────────── */
     {
       id: "bot", tier: 2,
       strong: ["are you a bot", "are you ai", "are you real", "are you anjali", "who are you", "what are you", "is this anjali", "is this really", "talk to anjali", "speak to anjali", "talk to her", "human", "real person", "talking to a", "chatbot", "is this a bot"],

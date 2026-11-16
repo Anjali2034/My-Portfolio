@@ -1,7 +1,3 @@
-/*
-  "Ask about Anjali" — matching engine. Answers come from bot-knowledge.js.
-  Runs instantly in the browser: no server, no network calls.
-*/
 (function (root) {
   function norm(q) {
     return (" " + String(q || "").toLowerCase()
@@ -24,8 +20,6 @@
     }
     return prev[b.length];
   }
-
-  // 1 = exact/prefix match, 0.75 = typo match, 0 = no match
   function hit(term, q, toks) {
     var exact = term.charAt(term.length - 1) === "$";
     var t = exact ? term.slice(0, -1) : norm(term).trim();
@@ -66,10 +60,10 @@
     return kb.topics.map(function (t, i) {
       var strong = sum(t.strong, 3, q, toks);
       var s = strong + sum(t.terms, 2, q, toks) + sum(t.weak, 1, q, toks);
-      if (t.exact && t.exact.indexOf(q.trim()) > -1) s += 3;   // bare one-word queries like "about" or "experience"
-      if (t.tier === 0 && strong > 0) s += 4;           // sensitive topics win when clearly asked
-      if (t.tier === 2) s -= 1;                         // small talk only when nothing else fits
-      if (t.brag && negative) s -= 2;                   // never answer a negative question with a success story
+      if (t.exact && t.exact.indexOf(q.trim()) > -1) s += 3;
+      if (t.tier === 0 && strong > 0) s += 4;
+      if (t.tier === 2) s -= 1;
+      if (t.brag && negative) s -= 2;
       return { t: t, s: s, i: i };
     }).sort(function (a, b) { return b.s - a.s || a.i - b.i; });
   }
@@ -80,7 +74,6 @@
     var ranked = score(kb, raw);
     var best = ranked[0];
     if (!best || best.s < 2) {
-      // a bare "?", "what", "hmm"... gets the help menu rather than "I'd rather not guess"
       var toks = norm(raw).trim().split(" ").filter(Boolean);
       var help = kb.topics.filter(function (t) { return t.id === "help"; })[0];
       if (help && toks.length <= 1 && (toks[0] || "").length <= 4) return answer(kb, help);
@@ -88,8 +81,6 @@
     }
     return answer(kb, best.t);
   }
-
-  /* ── Question log: fire-and-forget, never blocks or breaks the chat ── */
   function store(kind) { try { return kind === "s" ? window.sessionStorage : window.localStorage; } catch (e) { return null; } }
 
   function loggingOff() {
@@ -137,7 +128,6 @@
         device: window.matchMedia && window.matchMedia("(max-width: 760px)").matches ? "phone" : "desktop",
         ref: cameFrom()
       });
-      // text/plain + no-cors = a "simple" request: no preflight, no waiting, works with Apps Script
       fetch(kb.logUrl, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body })
         .catch(function () {});
     } catch (e) {}
