@@ -18,6 +18,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
+<script src="./bot-knowledge.js"></script>
+<script src="./bot-engine.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -44,6 +46,8 @@ a{color:inherit;text-decoration:none}
 .lift:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(28,25,22,.08)}
 .btn{transition:background .25s ease,color .25s ease,transform .25s ease}
 .btn:hover{transform:translateY(-2px)}
+.ask-link:hover{border-color:currentColor}
+.ask-list [data-me]{scroll-margin-top:12px}
 html{scroll-padding-top:72px}
 @media (min-width: 901px){.hero-text{padding-bottom:96px !important}}
 @media (min-width: 761px) and (max-height: 780px){.work-pin{gap:20px !important}.result{height:220px !important;padding:18px 22px !important}.bignum{font-size:72px !important}}
@@ -58,15 +62,14 @@ html{scroll-padding-top:72px}
 }
 @media (max-width: 900px){
 .hero{min-height:0 !important}
-.hero-h1{order:-1;font-size:clamp(56px,17vw,76px) !important}
-.hero-intro{justify-content:center !important;margin-top:16px}
-.hero-intro p{max-width:none !important;text-align:center !important;font-size:15px !important}
-.hero-row{flex-wrap:wrap;min-height:0 !important;margin-top:28px !important;gap:6px !important}
-.hero-text{padding-bottom:0 !important;width:100%}
-.hero-a{font-size:clamp(44px,13.5vw,64px) !important}
-.hero-b>div{font-size:clamp(28px,8.6vw,40px) !important}
-.hero-b>div br{display:none}
-.hero-img{position:static !important;transform:none !important;order:3;margin:20px auto 0;height:min(420px,56svh) !important}
+.hero-inner{padding-bottom:40px !important}
+.hero-row{display:contents !important}
+.hero-img{position:static !important;transform:none !important;order:-1;margin:0 auto 16px;height:min(280px,30svh) !important;max-width:80vw !important}
+.hero-text{display:none !important}
+.hero-eyebrow{display:block !important}
+.hero-h1{font-size:clamp(48px,14vw,64px) !important}
+.hero-intro p{font-size:17px !important;max-width:420px !important}
+.hero-ctas{margin-top:20px !important}
 }
 @media (max-width: 760px){
 html{scroll-padding-top:92px}
@@ -75,7 +78,7 @@ html{scroll-padding-top:92px}
 .site-nav a{padding:8px !important}
 .site-cta{padding:10px 18px !important}
 .hero{margin-top:-84px !important;padding-top:84px !important}
-.hero-inner{padding:24px 20px 0 !important}
+.hero-inner{padding:24px 20px 40px !important}
 .sec-pad{padding:72px 20px !important}
 .sec-grid{gap:40px !important}
 .cards-top{margin-top:32px !important}
@@ -90,9 +93,9 @@ html{scroll-padding-top:92px}
 .cta-side>div{justify-content:flex-start !important}
 .cta-mail{font-size:17px !important;overflow-wrap:anywhere}
 .cta-pad{padding:72px 20px 132px !important}
-.ask-panel-list{max-height:30svh !important}
 #ask{font-size:16px !important}
 .ask-bar{bottom:calc(12px + env(safe-area-inset-bottom)) !important;padding:0 12px !important}
+.ask-panel{height:min(62svh,520px) !important}
 }
 @media (max-width: 760px){
 [style*="font-size: 11px"]{font-size:12px !important}
@@ -140,15 +143,20 @@ input::placeholder{color:#857D73}
 <section id="top" class="hero" style="background: #EDE3D8; margin-top: -72px; padding-top: 72px; overflow: hidden; box-sizing: border-box; min-height: 100vh; display: flex">
 <div class="hero-inner" style="position: relative; flex: 1; width: 100%; max-width: 1280px; margin: 0 auto; padding: 20px 28px 0; box-sizing: border-box; display: flex; flex-direction: column">
 <div style="position: absolute; left: 50%; bottom: -120px; transform: translateX(-50%); width: 640px; max-width: 120%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, #F6F0E8, rgba(246,240,232,0))"></div>
-<div class="in hero-intro" style="position: relative; display: flex; justify-content: flex-end; align-items: flex-start">
-<p style="max-width: 300px; text-align: right; font-size: 14px; line-height: 1.65; color: #3F3A34; margin: 0">I doubled one product's revenue, grew another's signups 6x on the same budget, and shipped an ML model that sales uses every day.</p>
+<div class="in hero-eyebrow" style="display: none; position: relative; text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6B645B">Product manager · Growth</div>
+<h1 class="in d1 hero-h1" style="position: relative; text-align: center; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: clamp(44px, 5.4vw, 88px); line-height: 1; letter-spacing: -0.02em; margin: 8px 0 0">Hi, I'm Anjali</h1>
+<div class="in d1 hero-intro" style="position: relative; display: flex; justify-content: center; margin-top: 16px">
+<p style="max-width: 640px; text-align: center; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; letter-spacing: -0.01em; color: #1C1916; margin: 0">I doubled one product's revenue, grew another's signups 6x on the same budget, and shipped an ML model that sales uses every day.</p>
 </div>
-<h1 class="in d1 hero-h1" style="position: relative; text-align: center; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: clamp(44px, 5.4vw, 88px); line-height: 1; letter-spacing: -0.02em; margin: 0">Hi, I'm Anjali</h1>
-<div class="hero-row" style="position: relative; margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; min-height: clamp(260px, calc(100vh - 320px), 560px)">
-<div class="in d2 hero-text hero-a" style="position: relative; z-index: 2; font-family: {{f.display}}; font-weight: 900; font-size: clamp(40px, 5vw, 80px); line-height: 0.86; letter-spacing: -0.045em; text-transform: uppercase; padding-bottom: 40px">I build<br>for growth</div>
-<img class="in d3 hero-img" src="./assets/967818dd383bfdc78c37e95df8994397.webp" alt="Anjali Verma speaking on stage" style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); display: block; height: clamp(260px, calc(100vh - 320px), 560px); width: auto; max-width: 86vw; filter: drop-shadow(0 0 18px rgba(246,240,232,0.9)); -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, #000 80%, transparent 100%)">
+<div class="in d2 hero-ctas" style="position: relative; z-index: 3; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px">
+<a href="#work" class="btn" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; box-sizing: border-box; border-radius: 999px; background: #1C1916; color: #F6F3EC; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">See my work</a>
+<a href="./assets/d411178e64044bfac45638a9fa71e0c1.pdf" target="_blank" rel="noopener" class="btn" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; box-sizing: border-box; border-radius: 999px; border: 1px solid rgba(28,25,22,0.35); color: #1C1916; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Résumé ↓</a>
+</div>
+<div class="hero-row" style="position: relative; margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; min-height: clamp(260px, calc(100vh - 380px), 540px)">
+<div class="in d2 hero-text hero-a" style="position: relative; z-index: 2; font-family: {{f.display}}; font-weight: 900; font-size: clamp(32px, 3.6vw, 60px); line-height: 0.86; letter-spacing: -0.045em; text-transform: uppercase; padding-bottom: 40px">I build<br>for growth</div>
+<img class="in d3 hero-img" src="./assets/967818dd383bfdc78c37e95df8994397.webp" alt="Anjali Verma speaking on stage" style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); display: block; height: clamp(260px, calc(100vh - 380px), 540px); width: auto; max-width: 86vw; filter: drop-shadow(0 0 18px rgba(246,240,232,0.9)); -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, #000 80%, transparent 100%)">
 <div class="in d4 hero-text hero-b" style="position: relative; z-index: 2; text-align: right; padding-bottom: 40px">
-<div style="font-family: {{f.display}}; font-weight: 900; font-size: clamp(28px, 3.4vw, 54px); line-height: 0.9; letter-spacing: -0.035em; text-transform: uppercase">Product <br>Manager</div>
+<div style="font-family: {{f.display}}; font-weight: 900; font-size: clamp(24px, 2.6vw, 42px); line-height: 0.9; letter-spacing: -0.035em; text-transform: uppercase">Product <br>Manager</div>
 </div>
 </div>
 </div>
@@ -157,7 +165,7 @@ input::placeholder{color:#857D73}
 <!-- IMPACT ROW (cream) -->
 <section ref="{{setImpact}}" style="background: #F6F3EC; border-bottom: 1px solid #E2DCD1">
 <div class="impact-grid" style="max-width: 1280px; margin: 0 auto; padding: 0 28px; box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))">
-<div style="padding: 36px 24px 36px 0"><div style="font-family: {{f.display}}; font-weight: 700; font-size: 52px; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{n1}}</div><div style="font-size: 14px; color: #6B645B; margin-top: 4px">quiz revenue, to ₹1.4L a month</div></div>
+<div style="padding: 36px 24px 36px 0"><div style="font-family: {{f.display}}; font-weight: 700; font-size: 52px; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{n1}}</div><div style="font-size: 14px; color: #6B645B; margin-top: 4px">quiz revenue a month</div></div>
 <div style="padding: 36px 24px 36px 0"><div style="font-family: {{f.display}}; font-weight: 700; font-size: 52px; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{n2}}</div><div style="font-size: 14px; color: #6B645B; margin-top: 4px">signups on the same ₹30K budget</div></div>
 <div style="padding: 36px 24px 36px 0"><div style="font-family: {{f.display}}; font-weight: 700; font-size: 52px; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{n3}}</div><div style="font-size: 14px; color: #6B645B; margin-top: 4px">leads scored every month</div></div>
 <div style="padding: 36px 24px 36px 0"><div style="font-family: {{f.display}}; font-weight: 700; font-size: 52px; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{n4}}</div><div style="font-size: 14px; color: #6B645B; margin-top: 4px">lower cost per signup</div></div>
@@ -187,7 +195,7 @@ input::placeholder{color:#857D73}
 <div class="result" style="height: 300px; border-radius: 20px; background: #7A2E3A; color: #F6F3EC; overflow: hidden; position: relative; padding: 24px 26px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
 <div class="shot" style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75"><span>Result</span></div>
 <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><span class="bignum" style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 104px; line-height: 0.85; letter-spacing: -0.02em">2x</span><span style="font-size: 15px; line-height: 1.35; max-width: 200px; opacity: 0.85">revenue and daily players</span></div>
-<div style="display: flex; gap: 16px"><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.25)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">230 → 480</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">daily players</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.25)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">₹50 to 70K → ₹1.4L</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">quiz revenue a month</div></div></div>
+<div style="display: flex; gap: 16px"><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.25)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">230 → 480</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">daily players</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.25)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">Form → product</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">manual workflow replaced</div></div></div>
 </div>
 <div style="padding: 22px 10px 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap">
@@ -195,7 +203,7 @@ input::placeholder{color:#857D73}
 <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B645B">Product · Reflexprep · 2026</span>
 </div>
 <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-top: 10px">
-<p style="font-size: 16px; line-height: 1.55; color: #3F3A34; margin: 0; max-width: 420px">Turned a Google Form into a real product. <b style="color: #1C1916">Revenue doubled to ₹1.4L a month.</b></p>
+<p style="font-size: 16px; line-height: 1.55; color: #3F3A34; margin: 0; max-width: 420px">Turned a Google Form into a real product. <b style="color: #1C1916">Monthly quiz revenue doubled.</b></p>
 <span class="ul" style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 3px; color: {{a.deep}}; white-space: nowrap">See what I did ↗</span>
 </div>
 </div>
@@ -207,7 +215,7 @@ input::placeholder{color:#857D73}
 <div class="result" style="height: 300px; border-radius: 20px; background: #1C1916; color: #F6F3EC; overflow: hidden; position: relative; padding: 24px 26px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
 <div class="shot" style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75"><span>Result</span></div>
 <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><span class="bignum" style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 104px; line-height: 0.85; letter-spacing: -0.02em">6x</span><span style="font-size: 15px; line-height: 1.35; max-width: 200px; opacity: 0.85">signups on the same ₹30K budget</span></div>
-<div style="display: flex; gap: 16px"><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.2)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">&lt;50 → 300+</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">signups a month</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.2)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">₹600 → ₹107</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">cost per signup</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.2)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">₹12K → ₹64K</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">revenue a month</div></div></div>
+<div style="display: flex; gap: 16px"><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.2)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">&lt;50 → 300+</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">signups a month</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.2)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">₹600 → ₹107</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">cost per signup</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(246,243,236,0.2)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">5x</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">revenue a month</div></div></div>
 </div>
 <div style="padding: 22px 10px 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap">
@@ -246,8 +254,8 @@ input::placeholder{color:#857D73}
 <button type="button" onClick="{{openP3}}" aria-label="See what I did: Payment Recovery" style="position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; border: 0; padding: 0; background: transparent; border-radius: 28px; cursor: pointer"></button>
 <div class="result" style="height: 300px; border-radius: 20px; background: #E3EAEE; color: #1C1916; overflow: hidden; position: relative; padding: 24px 26px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
 <div class="shot" style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75"><span>Result</span></div>
-<div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><span class="bignum" style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 104px; line-height: 0.85; letter-spacing: -0.02em">₹63.6K</span><span style="font-size: 15px; line-height: 1.35; max-width: 200px; opacity: 0.85">surfaced for recovery</span></div>
-<div style="display: flex; gap: 16px"><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(28,25,22,0.18)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">39</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">dropped transactions</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(28,25,22,0.18)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">2 → 1</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">gateways in one dashboard</div></div></div>
+<div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap"><span class="bignum" style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 104px; line-height: 0.85; letter-spacing: -0.02em">39</span><span style="font-size: 15px; line-height: 1.35; max-width: 200px; opacity: 0.85">dropped payments surfaced for recovery</span></div>
+<div style="display: flex; gap: 16px"><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(28,25,22,0.18)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">Paytm → Razorpay</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">during the migration</div></div><div style="flex: 1 1 0; min-width: 0; padding: 14px 16px 0 0; border-top: 1px solid rgba(28,25,22,0.18)"><div style="font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15">2 → 1</div><div style="font-size: 12px; line-height: 1.35; opacity: 0.72; margin-top: 4px">gateways in one dashboard</div></div></div>
 </div>
 <div style="padding: 22px 10px 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap">
@@ -255,7 +263,7 @@ input::placeholder{color:#857D73}
 <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B645B">Internal tools · Reflexprep · 2026</span>
 </div>
 <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-top: 10px">
-<p style="font-size: 16px; line-height: 1.55; color: #3F3A34; margin: 0; max-width: 420px">One dashboard for sales during a payment migration. <b style="color: #1C1916">₹63.6K in dropped payments surfaced.</b></p>
+<p style="font-size: 16px; line-height: 1.55; color: #3F3A34; margin: 0; max-width: 420px">One dashboard for sales during a payment migration. <b style="color: #1C1916">39 dropped payments surfaced.</b></p>
 <span class="ul" style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 3px; color: {{a.deep}}; white-space: nowrap">See what I did ↗</span>
 </div>
 </div>
@@ -451,30 +459,38 @@ input::placeholder{color:#857D73}
 </div>
 </sc-if>
 
-<!-- ASK BAR (sticky) -->
+<!-- ASK BAR (sticky; answers live in bot-knowledge.js) -->
 <div class="ask-bar" style="position: sticky; bottom: 20px; margin-top: -84px; height: 64px; display: flex; justify-content: center; padding: 0 16px; z-index: 30">
-<div style="position: relative; width: 100%; max-width: 520px">
+<div style="position: relative; width: 100%; max-width: 560px">
 <sc-if value="{{open}}" hint-placeholder-val="{{ false }}">
-<div style="position: absolute; left: 0; right: 0; bottom: 76px; background: #FFFFFF; border: 1px solid #E2DCD1; border-radius: 24px; box-shadow: 0 24px 60px rgba(28,25,22,0.16); overflow: hidden">
-<div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 14px 20px; border-bottom: 1px solid #EEEAE2">
-<div style="font-weight: 600; font-size: 15px">Ask about my work</div>
+<div class="ask-panel" role="dialog" aria-label="Ask about Anjali" style="position: absolute; left: 0; right: 0; bottom: 76px; height: min(500px, calc(100svh - 190px)); background: #FFFFFF; border: 1px solid #E2DCD1; border-radius: 24px; box-shadow: 0 24px 60px rgba(28,25,22,0.18); display: flex; flex-direction: column; overflow: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 12px 14px 20px; border-bottom: 1px solid #EEEAE2; flex: none">
+<div><div style="font-weight: 600; font-size: 15px">Ask about Anjali</div><div style="font-size: 12px; color: #6B645B; margin-top: 2px">Answers from her own notes · Questions are saved</div></div>
 <button type="button" onClick="{{onClose}}" aria-label="Close" style="width: 44px; height: 44px; border: 0; background: transparent; border-radius: 12px; cursor: pointer; color: #3F3A34; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
-<div class="ask-panel-list" style="padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto">
+<div class="ask-list" ref="{{setList}}" aria-live="polite" style="position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 16px 16px 8px; display: flex; flex-direction: column; gap: 10px">
 <sc-for list="{{msgs}}" as="m" hint-placeholder-count="1">
-<sc-if value="{{m.isAi}}" hint-placeholder-val="{{ true }}"><div style="align-self: flex-start; max-width: 88%; background: #EDE3D8; padding: 11px 14px; border-radius: 16px 16px 16px 4px; font-size: 14px; line-height: 1.55">{{m.text}}</div></sc-if>
-<sc-if value="{{m.isMe}}" hint-placeholder-val="{{ false }}"><div style="align-self: flex-end; max-width: 88%; background: #1C1916; color: #F6F3EC; padding: 11px 14px; border-radius: 16px 16px 4px 16px; font-size: 14px; line-height: 1.55">{{m.text}}</div></sc-if>
+<sc-if value="{{m.isAi}}" hint-placeholder-val="{{ true }}"><div style="align-self: flex-start; max-width: 92%">
+<div style="background: #F3ECE3; padding: 11px 14px; border-radius: 16px 16px 16px 4px; font-size: 14px; line-height: 1.55; color: #1C1916">{{m.text}}</div>
+<sc-if value="{{m.hasLinks}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px">
+<sc-for list="{{m.links}}" as="l" hint-placeholder-count="0">
+<sc-if value="{{l.isExt}}" hint-placeholder-val="{{ false }}"><a href="{{l.href}}" target="{{l.target}}" rel="noopener" class="ask-link" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid #D9D1C5; font-size: 13px; font-weight: 500; color: {{a.deep}}; background: #FFFFFF">{{l.label}}</a></sc-if>
+<sc-if value="{{l.isAct}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{l.go}}" class="ask-link" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid #D9D1C5; font: inherit; font-size: 13px; font-weight: 500; color: {{a.deep}}; background: #FFFFFF; cursor: pointer">{{l.label}}</button></sc-if>
+</sc-for>
+</div></sc-if>
+</div></sc-if>
+<sc-if value="{{m.isMe}}" hint-placeholder-val="{{ false }}"><div data-me="1" style="align-self: flex-end; max-width: 88%; background: #1C1916; color: #F6F3EC; padding: 11px 14px; border-radius: 16px 16px 4px 16px; font-size: 14px; line-height: 1.55">{{m.text}}</div></sc-if>
 </sc-for>
 </div>
-<div style="padding: 0 20px 16px; display: flex; flex-wrap: wrap; gap: 8px">
-<sc-for list="{{chips}}" as="ch" hint-placeholder-count="4"><button type="button" onClick="{{ch.ask}}" style="font: inherit; font-size: 13px; color: #1C1916; background: #F6F3EC; border: 1px solid #E2DCD1; border-radius: 999px; padding: 9px 13px; min-height: 44px; cursor: pointer">{{ch.label}}</button></sc-for>
-</div>
+<sc-if value="{{hasChips}}" hint-placeholder-val="{{ true }}"><div style="flex: none; padding: 8px 16px 10px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; border-top: 1px solid #F1ECE4">
+<sc-for list="{{chips}}" as="ch" hint-placeholder-count="3"><button type="button" onClick="{{ch.ask}}" style="flex: none; font: inherit; font-size: 13px; color: #1C1916; background: #F6F3EC; border: 1px solid #E2DCD1; border-radius: 999px; padding: 0 13px; min-height: 40px; white-space: nowrap; cursor: pointer">{{ch.label}}</button></sc-for>
+</div></sc-if>
 </div>
 </sc-if>
-<div style="display: flex; align-items: center; gap: 8px; height: 64px; box-sizing: border-box; padding: 8px 8px 8px 20px; background: rgba(255,255,255,0.9); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid #E2DCD1; border-radius: 999px; box-shadow: 0 12px 36px rgba(28,25,22,0.14)">
+<div style="display: flex; align-items: center; gap: 8px; height: 64px; box-sizing: border-box; padding: 8px 8px 8px 20px; background: rgba(255,255,255,0.92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid #E2DCD1; border-radius: 999px; box-shadow: 0 12px 36px rgba(28,25,22,0.14)">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{a.deep}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path></svg>
-<label for="ask" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Ask about my work</label>
-<input id="ask" type="text" value="{{q}}" onChange="{{onQ}}" onFocus="{{onOpen}}" onKeyDown="{{onKey}}" placeholder="Ask anything about my work" style="flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 15px; color: #1C1916; height: 44px">
+<label for="ask" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Ask about Anjali</label>
+<input id="ask" ref="{{setInput}}" type="text" autocomplete="off" enterkeyhint="send" maxlength="200" value="{{q}}" onChange="{{onQ}}" onFocus="{{onOpen}}" onKeyDown="{{onKey}}" placeholder="Ask anything about Anjali" style="flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 15px; color: #1C1916; height: 44px">
 <button type="button" onClick="{{onSend}}" aria-label="Send" style="width: 46px; height: 46px; flex: 0 0 46px; border-radius: 50%; border: 0; background: #1C1916; color: #F6F3EC; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
 </div>
 </div>
@@ -494,25 +510,17 @@ var FONTS = {
   "Manrope":     { display: "'Manrope', sans-serif", body: "'Manrope', sans-serif" }
 };
 var N = 4;
-var ANSWERS = [
-  { keys: ["win", "proud", "best", "biggest", "revenue", "quiz"], text: "Doubling daily quiz revenue at Reflexprep, from about ₹60K to ₹1.4L a month. I wrote the PRD, ran the sprints and saw it through launch." },
-  { keys: ["sql", "data", "analys", "number", "metric"], text: "Yes. I write SQL every week. At NEETprep, one query showed that students retaking NEET buy more than Class 12 students. That changed how we scored 100K+ leads a month." },
-  { keys: ["tool", "stack", "software"], text: "SQL, CleverTap, Mixpanel, Appsmith, Python and AWS Lambda. I prototype with Claude, Cursor and Lovable." },
-  { keys: ["fresher", "hire", "experience", "junior"], text: "I've already owned a roadmap, run growth experiments and shipped an ML model to production. In one year." },
-  { keys: ["growth", "signup", "acquisition", "marketing", "whatsapp", "fmge"], text: "I took a stalled FMGE platform from under 50 to 300+ signups a month on the same ₹30K budget. Cost per signup fell from ₹600 to ₹107." },
-  { keys: ["project", "built", "side", "scam", "legal", "casewise", "github"], text: "Three personal builds: ScamCheck, an AI agent that checks suspicious messages and links; CaseWise, an AI legal assistant built for Indian law; and a U-Net that outlines brain tumours on MRI scans, live on Hugging Face." },
-  { keys: ["ml", "ai", "model", "machine", "tumour", "tumor", "brain", "mri"], text: "At NEETprep I took a paused lead scoring model to production on AWS Lambda. I also trained a U-Net that outlines brain tumours on MRI scans, with a Dice score of 0.84 on unseen test scans." }
-];
+var KB = window.BOT_KB;
 var PROJ = [
   { kicker: "Product · Reflexprep · Jun to Sep 2026", title: "Daily Quiz", role: "APM, roadmap owner",
     context: "The daily quiz ran by hand on Google Forms. Every student got the same questions, and participation had flattened at around 230 a day.",
     did: ["Mapped every manual step of the Google Forms workflow", "Wrote the PRD: difficulty tiers and an exam weighted topic schedule", "Ran sprint planning with design and engineering", "Led user acceptance testing and delivery"],
-    results: [{ v: "230 → 480", l: "daily players" }, { v: "₹1.4L", l: "quiz revenue a month, up from ₹50 to 70K" }, { v: "2x", l: "engagement and revenue" }],
+    results: [{ v: "230 → 480", l: "daily players" }, { v: "2x", l: "quiz revenue a month" }, { v: "Form → product", l: "manual workflow replaced" }],
     tools: ["PRD", "Sprint planning", "UAT"] },
   { kicker: "Growth · Reflexprep · 2026", title: "FMGE Growth", role: "Owned the channel test",
     context: "The FMGE platform had stalled below 50 signups a month on a ₹30K monthly budget spent on paid ads.",
     did: ["Tested WhatsApp community partnerships as a new acquisition channel", "Kept the budget flat at ₹30K a month", "Compared cost per signup and revenue against paid ads"],
-    results: [{ v: "6x", l: "signups, under 50 to 300+ a month" }, { v: "₹600 → ₹107", l: "cost per signup" }, { v: "₹12K → ₹64K", l: "revenue a month" }],
+    results: [{ v: "6x", l: "signups, under 50 to 300+ a month" }, { v: "₹600 → ₹107", l: "cost per signup" }, { v: "5x", l: "revenue a month" }],
     tools: ["WhatsApp communities", "Partnerships", "Budget tracking"] },
   { kicker: "Data and ML · NEETprep · Jan to Jun 2026", title: "Lead Scoring", role: "CEO's office intern",
     context: "A lead scoring project for the sales team had been paused, while sales handled 100K+ leads a month.",
@@ -522,21 +530,36 @@ var PROJ = [
   { kicker: "Internal tools · Reflexprep · 2026", title: "Payment Recovery", role: "APM",
     context: "During the Paytm to Razorpay migration, the sales team had no single view of failed payments.",
     did: ["Built an internal admin dashboard in Appsmith for the sales team", "Brought failed payments from the migration into one view", "Surfaced dropped transactions so sales could follow up and recover them"],
-    results: [{ v: "39", l: "dropped transactions surfaced" }, { v: "₹63.6K", l: "value sent for recovery" }],
+    results: [{ v: "39", l: "dropped transactions surfaced" }, { v: "2 → 1", l: "payment gateways in one view" }],
     tools: ["Appsmith", "Payments data"] }
 ];
-var CHIPS = ["Biggest win?", "Can you work with data?", "Why hire a fresher?", "Tools you use?"];
 
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     var self = this;
-    this.state = { active: 0, k: 1, open: false, pi: null, q: "", msgs: [{ from: "ai", text: "Hi! Ask me anything about Anjali's work, results or tools." }] };
+    this.state = { active: 0, k: 1, open: false, pi: null, q: "", asked: [], msgs: [{ from: "ai", text: KB.greeting, links: [], next: KB.starters }] };
+    this.lastLen = 1; this.wasOpen = false;
     this.cur = 0; this.target = 0; this.p = 0; this.overflow = 0; this.counted = false;
     this.setSec = function (el) { if (el) self.sec = el; };
     this.setTrack = function (el) { if (el) self.track = el; };
     this.setBar = function (el) { if (el) self.bar = el; };
     this.setImpact = function (el) { if (el) self.impact = el; };
+    this.setList = function (el) { self.list = el; };
+    this.setInput = function (el) { self.input = el; };
+  }
+  componentDidUpdate() {
+    var open = this.state.open, len = this.state.msgs.length, list = this.list;
+    if (open && !this.wasOpen) {
+      if (list) list.scrollTop = list.scrollHeight;
+    }
+    if (open && list && len !== this.lastLen) {
+      // show the newest question at the top, so the whole answer below it is visible
+      var mine = list.querySelectorAll("[data-me]");
+      var last = mine[mine.length - 1];
+      list.scrollTop = last ? Math.max(0, last.offsetTop - 12) : list.scrollHeight;
+    }
+    this.wasOpen = open; this.lastLen = len;
   }
   componentDidMount() {
     var self = this;
@@ -622,25 +645,31 @@ class Component extends DCLogic {
     cancelAnimationFrame(this.raf);
     if (this.io) this.io.disconnect();
   }
-  reply(text) {
-    var t = text.toLowerCase();
-    for (var i = 0; i < ANSWERS.length; i++) {
-      for (var j = 0; j < ANSWERS[i].keys.length; j++) {
-        var key = ANSWERS[i].keys[j];
-        if (new RegExp("\\b" + key + (key.length <= 3 ? "\\b" : "")).test(t)) return ANSWERS[i].text;
-      }
-    }
-    return "I don't have that one yet. Email Anjali at anjali.verma20032004@gmail.com and she'll answer it herself.";
-  }
-  send(text) {
-    if (!text || !text.trim()) { this.setState({ open: true }); return; }
-    var a = this.reply(text);
+  send(text, how) {
+    var q = String(text || "").trim();
+    if (!q) { if (this.input) this.input.focus(); return; }
+    var r = window.BotEngine.reply(KB, q);
+    window.BotEngine.log(KB, q, r, how);
     this.setState(function (s) {
-      return { open: true, q: "", msgs: s.msgs.concat([{ from: "me", text: text }, { from: "ai", text: a }]).slice(-5) };
+      return { open: true, q: "", asked: s.asked.concat([q.toLowerCase()]),
+        msgs: s.msgs.concat([{ from: "me", text: q }, { from: "ai", text: r.text, links: r.links, next: r.next }]).slice(-40) };
     });
+  }
+  goTo(l) {
+    if (l.project !== undefined) { this.setState({ pi: l.project }); return; }
+    if (l.section) {
+      this.setState({ open: false });
+      var el = document.getElementById(l.section);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 70, behavior: "smooth" });
+    }
   }
   renderVals() {
     var self = this;
+    var asked = this.state.asked, lastAi = this.state.msgs[this.state.msgs.length - 1];
+    var notAsked = function (c) { return asked.indexOf(c.toLowerCase()) === -1; };
+    var chips = ((lastAi && lastAi.next) || []).filter(notAsked);
+    if (chips.length < 2) chips = chips.concat(KB.starters.filter(function (c) { return notAsked(c) && chips.indexOf(c) === -1; }));
+    chips = chips.slice(0, 3);
     var k = this.state.k, act = this.state.active;
     var op = function (i) { return i === act ? 1 : 0.5; };
     return {
@@ -656,12 +685,20 @@ class Component extends DCLogic {
       closeP: function () { self.setState({ pi: null }); },
       open: this.state.open,
       q: this.state.q,
-      msgs: this.state.msgs.map(function (m) { return { text: m.text, isAi: m.from === "ai", isMe: m.from === "me" }; }),
-      chips: CHIPS.map(function (c) { return { label: c, ask: function () { self.send(c); } }; }),
+      msgs: this.state.msgs.map(function (m) {
+        var links = (m.links || []).map(function (l) {
+          return { label: l.label, isExt: !!l.href, isAct: !l.href, href: l.href, target: l.newTab ? "_blank" : "_self",
+            go: function () { self.goTo(l); } };
+        });
+        return { text: m.text, isAi: m.from === "ai", isMe: m.from === "me", links: links, hasLinks: links.length > 0 };
+      }),
+      chips: chips.map(function (c) { return { label: c, ask: function () { self.send(c, "chip"); } }; }),
+      hasChips: chips.length > 0,
+      setList: this.setList, setInput: this.setInput,
       onQ: function (e) { self.setState({ q: e.target.value }); },
       onOpen: function () { self.setState({ open: true }); },
       onClose: function () { self.setState({ open: false }); },
-      onKey: function (e) { if (e.key === "Enter") self.send(self.state.q); if (e.key === "Escape") self.setState({ open: false }); },
+      onKey: function (e) { if (e.key === "Enter") { e.preventDefault(); self.send(self.state.q); } if (e.key === "Escape") { self.setState({ open: false }); if (self.input) self.input.blur(); } },
       onSend: function () { self.send(self.state.q); }
     };
   }
