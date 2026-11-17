@@ -422,6 +422,11 @@ input::placeholder{color:#857D73}
 <div style="display: flex; flex-direction: column; margin-top: 6px">
 <sc-for list="{{p.did}}" as="d" hint-placeholder-count="3"><div style="display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid #EEEAE2; font-size: 15px; line-height: 1.5"><b style="color: {{a.deep}}">{{d.n}}</b><span>{{d.t}}</span></div></sc-for>
 </div></div>
+<div class="p-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px">
+<div style="background: #FFFFFF; border-radius: 18px; padding: 18px 20px; grid-column: 1 / -1"><div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: {{a.deep}}">My part</div><div style="font-size: 15px; line-height: 1.55; margin-top: 8px">{{p.mine}}</div></div>
+<div style="background: #FFFFFF; border-radius: 18px; padding: 18px 20px"><div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: {{a.deep}}">Why it worked</div><div style="font-size: 15px; line-height: 1.55; margin-top: 8px">{{p.why}}</div></div>
+<div style="background: #FFFFFF; border-radius: 18px; padding: 18px 20px"><div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: {{a.deep}}">What I'd do differently</div><div style="font-size: 15px; line-height: 1.55; margin-top: 8px">{{p.diff}}</div></div>
+</div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B645B; margin-right: 4px">{{p.role}}</span>
 <sc-for list="{{p.tools}}" as="t" hint-placeholder-count="3"><span style="font-size: 12px; padding: 6px 11px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2DCD1">{{t.x}}</span></sc-for>
 </div>
@@ -482,22 +487,34 @@ var KB = window.BOT_KB;
 var PROJ = [
   { kicker: "Product · Reflexprep · Jun to Sep 2026", title: "Daily Quiz", role: "APM, roadmap owner",
     context: "The daily quiz ran by hand on Google Forms. Every student got the same questions, and participation had flattened at around 230 a day.",
-    did: ["Mapped every manual step of the Google Forms workflow", "Wrote the PRD: difficulty tiers and an exam weighted topic schedule", "Ran sprint planning with design and engineering", "Led user acceptance testing and delivery"],
+    did: ["Mapped every manual step of the Google Forms workflow", "Wrote the PRD: difficulty tiers and an exam weighted topic schedule", "Designed the UI and built the frontend myself", "Ran sprint planning with engineering, then led UAT and delivery"],
+    mine: "I owned the roadmap, PRD, sprint planning, UAT and delivery. With the design team busy elsewhere, I also designed the UI and built the frontend myself, while engineering built the backend.",
+    why: "I spoke with 80+ students first. Difficulty tiers kept every level playing, exam weighted topics made it feel useful, and a coupon at the end turned daily players into buyers.",
+    diff: "Set up event tracking before launch, not after, and test with production scale data. Volume is what broke the leaderboard after launch.",
     results: [{ v: "230 → 480", l: "daily players" }, { v: "2x", l: "quiz revenue a month" }, { v: "Form → product", l: "manual workflow replaced" }],
-    tools: ["PRD", "Sprint planning", "UAT"] },
+    tools: ["PRD", "UI design", "Frontend", "Sprint planning", "UAT"] },
   { kicker: "Growth · Reflexprep · 2026", title: "FMGE Growth", role: "Owned the channel test",
     context: "The FMGE platform had stalled below 50 signups a month on its paid ads budget.",
-    did: ["Tested WhatsApp community partnerships as a new acquisition channel", "Kept the monthly budget flat", "Compared cost per signup and revenue against paid ads"],
+    did: ["Tested WhatsApp community partnerships as a new acquisition channel", "Partnered with the admins of 20+ groups, offering a fee plus free mock tests and exclusive content", "Kept the monthly budget flat", "Compared cost per signup and revenue against paid ads"],
+    mine: "I ran this test end to end: chose the channel, brought on the admins of 20+ WhatsApp groups and tracked results against paid ads.",
+    why: "FMGE students already gather in WhatsApp groups by country and university. A trusted admin sharing something useful beats an ad.",
+    diff: "Track signups per group from day one, so the budget goes to the groups that convert best.",
     results: [{ v: "6x", l: "signups, under 50 to 300+ a month" }, { v: "₹600 → ₹107", l: "cost per signup" }, { v: "5x", l: "revenue a month" }],
     tools: ["WhatsApp communities", "Partnerships", "Budget tracking"] },
   { kicker: "Data and ML · NEETprep · Jan to Jun 2026", title: "Lead Scoring", role: "CEO's office intern",
     context: "A lead scoring project for the sales team had been paused, while sales handled 100K+ leads a month.",
     did: ["Revived the paused project and shipped it to production on AWS Lambda", "Built a logistic regression model on 7+ intent signals, trained on past conversions", "Found in SQL that droppers converted better than Class 12 students", "Added exam year as a signal, with separate rules for payment failure, trial and form leads"],
+    mine: "I revived the project, found the droppers signal in SQL, built the model and deployed it on AWS Lambda. Sales now uses the scores to decide who to call first.",
+    why: "I didn't restart the old model as it was. I framed one question, which students should sales call first, and built the smallest model that answered it.",
+    diff: "Agree an outcome metric with sales before launch, such as conversion of called leads, so the impact shows up as a number.",
     results: [{ v: "100K+", l: "leads scored a month" }, { v: "7+", l: "intent signals" }, { v: "Live", l: "in production for sales" }],
     tools: ["SQL", "Logistic regression", "AWS Lambda"] },
   { kicker: "Internal tools · Reflexprep · 2026", title: "Payment Recovery", role: "APM",
     context: "During the Paytm to Razorpay migration, the sales team had no single view of failed payments.",
     did: ["Built an internal admin dashboard in Appsmith for the sales team", "Brought failed payments from the migration into one view", "Surfaced dropped transactions so sales could follow up and recover them"],
+    mine: "I built the dashboard in Appsmith myself and automated failed payment tracking, so sales could follow up on every dropped payment.",
+    why: "Sales didn't need more data, they needed one view during a messy migration. Shipping in about two days meant follow ups started straight away.",
+    diff: "Track how many flagged payments were actually recovered, so the dashboard proves its value in recovered revenue, not just transactions found.",
     results: [{ v: "39", l: "dropped transactions surfaced" }, { v: "2 → 1", l: "payment gateways in one view" }],
     tools: ["Appsmith", "Payments data"] }
 ];
@@ -647,7 +664,7 @@ class Component extends DCLogic {
       o0: op(0), o1: op(1), o2: op(2), o3: op(3),
       counter: "0" + (act + 1) + " / 0" + N,
       pOpen: this.state.pi !== null,
-      p: (function () { var x = PROJ[self.state.pi === null ? 0 : self.state.pi]; return { kicker: x.kicker, title: x.title, role: x.role, context: x.context, results: x.results, tools: x.tools.map(function (t) { return { x: t }; }), did: x.did.map(function (t, i) { return { n: "0" + (i + 1), t: t }; }) }; })(),
+      p: (function () { var x = PROJ[self.state.pi === null ? 0 : self.state.pi]; return { kicker: x.kicker, title: x.title, role: x.role, context: x.context, mine: x.mine, why: x.why, diff: x.diff, results: x.results, tools: x.tools.map(function (t) { return { x: t }; }), did: x.did.map(function (t, i) { return { n: "0" + (i + 1), t: t }; }) }; })(),
       openP0: function () { self.setState({ pi: 0 }); }, openP1: function () { self.setState({ pi: 1 }); }, openP2: function () { self.setState({ pi: 2 }); }, openP3: function () { self.setState({ pi: 3 }); },
       closeP: function () { self.setState({ pi: null }); },
       open: this.state.open,

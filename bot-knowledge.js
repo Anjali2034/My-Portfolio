@@ -251,7 +251,7 @@ window.BOT_KB = {
       id: "win", tier: 1, brag: true,
       strong: ["biggest win", "proudest", "proud of", "achievement", "accomplishment", "best work", "best project", "greatest", "highlight"],
       terms: ["win", "proud", "achiev", "accomplish", "impact", "success", "daily quiz", "quiz", "revenue", "doubled"],
-      text: "Her biggest win is the Daily Quiz at Reflexprep. She turned a manual Google Forms quiz into a real product: she wrote the PRD, ran sprints and UAT, and took it to launch. Daily players grew from about 230 to 480, and monthly quiz revenue doubled.",
+      text: "Her biggest win is the Daily Quiz at Reflexprep. She turned a manual Google Forms quiz into a real product: she wrote the PRD, designed the UI, built the frontend, ran sprints and UAT, and took it to launch. Daily players grew from about 230 to 480, and monthly quiz revenue doubled.",
       links: ["quiz"],
       next: ["How does the quiz make money?", "What would she do differently?", "A failure she learned from"]
     },
@@ -260,7 +260,7 @@ window.BOT_KB = {
       strong: ["make money", "makes money", "monetis", "monetiz", "business model", "revenue model", "how does the quiz", "quiz work", "coupon", "how long did the quiz", "quiz team", "quiz timeline"],
       terms: ["earn", "paid users", "convert", "daily quiz"],
       weak: ["quiz"],
-      text: "The Daily Quiz is free to play and brings students back every day. Revenue comes from conversion: each quiz ends with a coupon code that nudges players towards buying a test series or course. Anjali worked with the design and engineering teams, took it from PRD to launch in about two weeks, and spoke with 80+ students along the way about what mattered to them.",
+      text: "The Daily Quiz is free to play and brings students back every day. Revenue comes from conversion: each quiz ends with a coupon code that nudges players towards buying a test series or course. Anjali designed the UI and built the frontend herself while engineering built the backend, took it from PRD to launch in about two weeks, and spoke with 80+ students along the way about what mattered to them.",
       links: ["quiz"],
       next: ["What would she do differently?", "A failure she learned from"]
     },
@@ -268,7 +268,7 @@ window.BOT_KB = {
       id: "role", tier: 1,
       strong: ["role vs", "her role", "your role", "my role", "her part", "your part", "own part", "contribution", "what was hers", "what was yours", "team vs", "vs the team", "ownership", "own vs", "individual"],
       terms: ["responsib", "owned", "team size"],
-      text: "Her part on each project was specific. Daily Quiz: she owned the roadmap, PRD, sprints, UAT and delivery with design and engineering. FMGE: she designed and ran the WhatsApp channel test. Lead Scoring: she revived the paused project, found the droppers signal in SQL and shipped it with tech and sales. Payment Recovery: she built the dashboard herself, then automated failed-payment tracking.",
+      text: "Her part on each project was specific. Daily Quiz: she owned the roadmap, PRD, sprints, UAT and delivery, and designed the UI and built the frontend herself while engineering built the backend. FMGE: she designed and ran the WhatsApp channel test. Lead Scoring: she revived the paused project, found the droppers signal in SQL, built the model and deployed it herself on AWS Lambda for sales. Payment Recovery: she built the dashboard herself, then automated failed-payment tracking.",
       links: ["work"],
       next: ["Biggest win?", "Tell me about a disagreement"]
     },
@@ -375,7 +375,7 @@ window.BOT_KB = {
       id: "workstyle", tier: 1,
       strong: ["soft skill", "leadership", "communication", "teamwork", "team player", "collaborat", "problem solving", "problem solver", "working style", "work style", "cross functional", "interpersonal", "people skill", "lead a team"],
       terms: ["communicat", "team work", "work with others", "attitude", "personality"],
-      text: "Anjali works closely with design, engineering and sales: she ran sprint planning and UAT on the Daily Quiz, and shipped lead scoring with both the tech and sales teams. When she disagrees, she makes her case with evidence, as she did when walking her manager through what testing could and couldn't show before the quiz automation launch. And she stays when things break: after the leaderboard incident she worked late with engineering until it was fixed.",
+      text: "Anjali works closely with design, engineering and sales: she ran sprint planning and UAT on the Daily Quiz, and built and shipped lead scoring for the sales team. When she disagrees, she makes her case with evidence, as she did when walking her manager through what testing could and couldn't show before the quiz automation launch. And she stays when things break: after the leaderboard incident she worked late with engineering until it was fixed.",
       links: ["quiz"],
       next: ["Tell me about a disagreement", "A failure she learned from", "Her role vs the team?"]
     },
@@ -415,7 +415,7 @@ window.BOT_KB = {
       id: "prd", tier: 1,
       strong: ["prd", "product requirement", "spec$", "specs$", "user stor", "sprint", "uat", "agile", "roadmap"],
       terms: ["requirement", "documentation", "jira", "scrum"],
-      text: "Yes. On the Daily Quiz she wrote the PRD (difficulty tiers and an exam-weighted topic schedule), ran sprint planning with design and engineering, and led UAT and delivery. Since then, her specs include what to measure and edge cases like data volume before development starts.",
+      text: "Yes. On the Daily Quiz she wrote the PRD (difficulty tiers and an exam-weighted topic schedule), designed the UI and built the frontend herself, ran sprint planning with engineering, and led UAT and delivery. Since then, her specs include what to measure and edge cases like data volume before development starts.",
       links: ["quiz"],
       next: ["What would she do differently?", "How does she prioritise?"]
     },
