@@ -20,7 +20,7 @@ window.BOT_KB = {
              "regret", "lost$", "lose$", "struggl", "setback", "weak", "didnt work", "did not work", "went wrong"],
 
   LINKS: {
-    resume:     { label: "Résumé ↓",           href: "./assets/d411178e64044bfac45638a9fa71e0c1.pdf", newTab: true },
+    resume:     { label: "Résumé ↓",           href: "./assets/Anjali_Verma_Resume.pdf", newTab: true },
     email:      { label: "Email Anjali",        href: "mailto:anjali.verma20032004@gmail.com" },
     whatsapp:   { label: "WhatsApp",            href: "https://wa.me/918273613578", newTab: true },
     call:       { label: "Call +91 82736 13578", href: "tel:+918273613578" },
@@ -322,9 +322,9 @@ window.BOT_KB = {
     },
     {
       id: "leads", tier: 1, brag: true,
-      strong: ["lead scoring", "lead score", "droppers", "dropper", "logistic regression", "lambda", "100k"],
+      strong: ["lead scoring", "lead score", "droppers", "dropper", "logistic regression", "lambda", "100k", "connect rate"],
       terms: ["lead$", "leads$", "scoring", "sales team", "intent signal", "conversion"],
-      text: "At NEETprep, a lead scoring project had been paused because the earlier version wasn't reliable enough to act on, while sales handled 100K+ leads a month. Anjali revived it, built a logistic regression model on 7+ intent signals, and found in SQL that droppers (students retaking NEET) convert better than Class 12 students. She shipped it to production on AWS Lambda, and sales now uses it to call the right students first.",
+      text: "At NEETprep, a lead scoring project had been paused because the earlier version wasn't reliable enough to act on, while sales handled 100K+ leads a month. Anjali revived it, built a logistic regression model on 7+ intent signals, and found in SQL that droppers (students retaking NEET) convert 2.5x better than Class 12 students (8% vs 3%). She shipped it to production on AWS Lambda, and with sales calling top-scored leads first, connect rate rose from 20% to 32%.",
       links: ["leads"],
       next: ["What else did she do at NEETprep?", "Can she work with data?"]
     },
@@ -383,7 +383,7 @@ window.BOT_KB = {
       id: "data", tier: 1, brag: true,
       strong: ["sql", "work with data", "data analysis", "analytics", "analyse", "analyze", "analytical", "dashboarding", "excel"],
       terms: ["data", "analys", "number", "metric", "query", "insight", "mixpanel", "funnel"],
-      text: "Yes, she writes SQL every week. At NEETprep, one query showed that droppers buy more than Class 12 students, and that became a signal in the lead scoring model that scores 100K+ leads a month. She works in CleverTap and Mixpanel, and she automated NEETprep's daily reporting.",
+      text: "Yes, she writes SQL every week. At NEETprep, one query showed that droppers convert 2.5x better than Class 12 students (8% vs 3%), and that became a signal in the lead scoring model that scores 100K+ leads a month. She works in CleverTap and Mixpanel, and she automated NEETprep's daily reporting.",
       links: ["leads"],
       next: ["Tools she uses?", "How does she run experiments?"]
     },
@@ -423,7 +423,7 @@ window.BOT_KB = {
       id: "scamcheck", tier: 1, brag: true,
       strong: ["scamcheck", "scam check", "scam", "fraud", "upi"],
       terms: ["phishing", "otp", "hinglish", "suspicious", "crore", "cyber", "22495"],
-      text: "Indians lost at least ₹22,495 crore to cyber fraud in 2025 (Ministry of Home Affairs data), yet most scams follow a handful of known scripts. ScamCheck gives a verdict, the evidence and the next step in seconds, in English, Hindi or Hinglish. Two decisions came from early users: they pasted messages with their OTP still in them, so it hides OTPs instantly, and they sent screenshots, so it reads screenshots. Next is WhatsApp, where scams arrive.",
+      text: "Indians lost at least ₹22,495 crore to cyber fraud in 2025 (Ministry of Home Affairs data), yet most scams follow a handful of known scripts. ScamCheck gives a verdict, the evidence and the next step in seconds, in English, Hindi or Hinglish, and 40+ users have tested it. Verdicts are rules-first: AI can only make a verdict stricter, never softer. Users shaped it too, so it hides OTPs instantly and reads screenshots. Next is WhatsApp, where scams arrive.",
       links: ["scamcheck", "github"],
       next: ["Tell me about CaseWise", "Her biggest weakness?"]
     },
@@ -480,7 +480,7 @@ window.BOT_KB = {
       id: "story-data", tier: 1, brag: true,
       strong: ["data driven decision", "decision with data", "data decision", "used data", "data to decide", "against the obvious", "data told", "made with data", "decision you made", "decision she made", "data driven", "surprising insight", "counterintuitive", "insight from data"],
       terms: ["assumption", "surprising", "unexpected"],
-      text: "At NEETprep, the obvious assumption was that Class 12 students, the largest group, were the best leads. When Anjali queried past conversions, droppers (students retaking NEET) actually converted better. She made exam year a scoring signal so sales called droppers earlier. Her takeaway: check the assumption everyone shares before building on it.",
+      text: "At NEETprep, the obvious assumption was that Class 12 students, the largest group, were the best leads. When Anjali queried past conversions, droppers (students retaking NEET) actually converted 2.5x better (8% vs 3%). She made exam year a scoring signal so sales called them earlier, and once the model was live, connect rate rose from 20% to 32%. Her takeaway: check the assumption everyone shares before building on it.",
       links: ["leads"],
       next: ["Tell me about lead scoring", "How does she handle ambiguity?"]
     },
