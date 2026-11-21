@@ -97,7 +97,7 @@
     var s = store("s"), id = null;
     try { id = s && s.getItem("anjali-visitor"); } catch (e) {}
     if (!id) {
-      id = Math.random().toString(36).slice(2, 8).toUpperCase();
+      id = (Math.random().toString(36).slice(2) + "000000").slice(0, 6).toUpperCase();
       try { if (s) s.setItem("anjali-visitor", id); } catch (e) {}
     }
     return id;
