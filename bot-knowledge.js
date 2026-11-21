@@ -390,8 +390,8 @@ window.BOT_KB = {
     {
       id: "tools", tier: 1,
       strong: ["tools", "tool stack", "tech stack", "stack", "software", "python", "code", "coding", "program", "technical"],
-      terms: ["tool", "clevertap", "mixpanel", "aws", "cursor", "lovable", "claude", "skills", "skill set", "skillset", "technical skill", "hard skill", "key skill"],
-      text: "For work: SQL, Python, CleverTap, Mixpanel, Appsmith and AWS Lambda. For fast prototyping: Claude, Cursor and Lovable. She codes well enough to ship her own products: ScamCheck, CaseWise and her U-Net model are all her own builds.",
+      terms: ["tool", "clevertap", "mixpanel", "aws", "cursor", "lovable", "claude", "skills", "skill set", "skillset", "technical skill", "hard skill", "key skill", "prompt engineering", "rag$", "evals", "ai guardrail", "unit economics", "llm product"],
+      text: "Product and growth: discovery, PRDs, prioritisation, sprint planning and UAT, channel experiments, paid acquisition and unit economics. Data: SQL, funnel and cohort analysis, event tracking, CleverTap and Mixpanel. AI and build: LLM product design, prompt engineering, RAG, AI guardrails and evals, Appsmith, Python, AWS Lambda, Claude and Cursor. ScamCheck, CaseWise and her U-Net model are all her own builds.",
       links: ["projects", "github"],
       next: ["Things she built", "Can she work with data?"]
     },
@@ -423,7 +423,7 @@ window.BOT_KB = {
       id: "scamcheck", tier: 1, brag: true,
       strong: ["scamcheck", "scam check", "scam", "fraud", "upi"],
       terms: ["phishing", "otp", "hinglish", "suspicious", "crore", "cyber", "22495"],
-      text: "Indians lost at least ₹22,495 crore to cyber fraud in 2025 (Ministry of Home Affairs data), yet most scams follow a handful of known scripts. ScamCheck lets anyone paste a message, link, UPI ID or screenshot and get a verdict, the evidence and what to do next in seconds, in English, Hindi or Hinglish. Early users said the Hindi explanations helped, and some links it flagged really were scams that could have cost them money. Next, Anjali wants to make WhatsApp the main channel, since that's where scams arrive.",
+      text: "Indians lost at least ₹22,495 crore to cyber fraud in 2025 (Ministry of Home Affairs data), yet most scams follow a handful of known scripts. ScamCheck gives a verdict, the evidence and the next step in seconds, in English, Hindi or Hinglish. Two decisions came from early users: they pasted messages with their OTP still in them, so it hides OTPs instantly, and they sent screenshots, so it reads screenshots. Next is WhatsApp, where scams arrive.",
       links: ["scamcheck", "github"],
       next: ["Tell me about CaseWise", "Her biggest weakness?"]
     },
