@@ -1,5 +1,5 @@
 window.BOT_KB = {
-  logUrl: "https://script.google.com/macros/s/AKfycbyN1Zf5SV7FvYDDG8wbQdOH2oY0YHeCqkCbKGf-FCoNleWJ26iqoxevTuWX3yCY7EadlA/exec",
+  logUrl: "https://script.google.com/macros/s/AKfycbwE76MevdRv2A8K76OfTbJ-btbgkbXzKALu8YwslHSJP4txiDErpxD6FBuzcG6JJQPhMA/exec",
 
   greeting: "Hi! I'm Anjali's portfolio assistant. Ask me about her work, results or availability.",
 
