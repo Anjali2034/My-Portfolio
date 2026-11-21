@@ -651,12 +651,22 @@ class Component extends DCLogic {
   send(text, how) {
     var q = String(text || "").trim();
     if (!q) { if (this.input) this.input.focus(); return; }
-    var r = window.BotEngine.reply(KB, q);
-    window.BotEngine.log(KB, q, r, how);
+    this.warm();
+    var self = this, key = "p" + Date.now();
     this.setState(function (s) {
       return { open: true, q: "", asked: s.asked.concat([q.toLowerCase()]),
-        msgs: s.msgs.concat([{ from: "me", text: q }, { from: "ai", text: r.text, links: r.links, next: r.next }]).slice(-40) };
+        msgs: s.msgs.concat([{ from: "me", text: q }, { from: "ai", key: key, text: "…", links: [], next: [] }]).slice(-40) };
     });
+    window.BotEngine.smartReply(KB, q).then(function (r) {
+      window.BotEngine.log(KB, q, r, how);
+      self.setState(function (s) {
+        return { msgs: s.msgs.map(function (m) { return m.key === key ? { from: "ai", text: r.text, links: r.links, next: r.next } : m; }) };
+      });
+    });
+  }
+  warm() {
+    var c = navigator.connection;
+    if (!(c && (c.saveData || /2g/.test(c.effectiveType || "")))) window.BotEngine.loadMeaning("./");
   }
   goTo(l) {
     if (l.project !== undefined) { this.setState({ pi: l.project }); return; }
@@ -699,7 +709,7 @@ class Component extends DCLogic {
       hasChips: chips.length > 0,
       setList: this.setList, setInput: this.setInput,
       onQ: function (e) { self.setState({ q: e.target.value }); },
-      onOpen: function () { self.setState({ open: true }); },
+      onOpen: function () { self.setState({ open: true }); self.warm(); },
       onClose: function () { self.setState({ open: false }); },
       onKey: function (e) { if (e.key === "Enter") { e.preventDefault(); self.send(self.state.q); } if (e.key === "Escape") { self.setState({ open: false }); if (self.input) self.input.blur(); } },
       onSend: function () { self.send(self.state.q); }

@@ -1,0 +1,2 @@
+all-MiniLM-L6-v2 (sentence-transformers), ONNX export by Xenova.
+Licence: Apache License 2.0. https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2

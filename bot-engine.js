@@ -84,6 +84,8 @@
   function reply(kb, text) {
     var raw = String(text || "");
     if (/[ऀ-ॿ]/.test(raw) && !/[a-z]{3,}/i.test(raw)) return answer(kb, Object.assign({ id: "non-english" }, kb.nonEnglish));
+    var nq = norm(raw);
+    if (kb.notSkills && sum(kb.notSkills, 1, nq, nq.trim().split(" "), nq) > 0) return answer(kb, Object.assign({ id: "fallback" }, kb.fallback));
     var ranked = score(kb, raw);
     var best = ranked[0];
     if (!best || best.s < 2) {
@@ -94,6 +96,87 @@
     }
     return answer(kb, best.t);
   }
+  var MEANING = { HIGH: 5, KEEP: 5, STRONG: 0.675, WEAK: 0.625, MARGIN: 0.04 };
+  var sem = { embed: null, vec: null, loading: null };
+
+  function prep(text) { return expand(norm(text)).trim(); }
+
+  function setMeaning(embed, vectors) {
+    var bin = typeof atob === "function" ? atob(vectors.data) : Buffer.from(vectors.data, "base64").toString("binary");
+    var data = new Int8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) data[i] = bin.charCodeAt(i) << 24 >> 24;
+    sem.vec = { dim: vectors.dim, topics: vectors.topics, idx: vectors.idx, data: data };
+    sem.embed = embed;
+  }
+
+  function loadMeaning(base) {
+    if (sem.loading) return sem.loading;
+    base = base || "./";
+    sem.loading = Promise.all([
+      import(base + "vendor/transformers/transformers.min.js"),
+      fetch(base + "bot-vectors.json").then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      var T = res[0], env = T.env;
+      env.allowRemoteModels = false;
+      env.allowLocalModels = true;
+      env.localModelPath = base + "models/";
+      env.useBrowserCache = true;
+      env.backends.onnx.wasm.wasmPaths = base + "vendor/transformers/";
+      env.backends.onnx.wasm.numThreads = 1;
+      return T.pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2", { quantized: true }).then(function (ex) {
+        setMeaning(function (s) {
+          return ex(s, { pooling: "mean", normalize: true }).then(function (o) { return o.data; });
+        }, res[1]);
+        return true;
+      });
+    }).catch(function () { sem.loading = null; return false; });
+    return sem.loading;
+  }
+
+  function meaningRank(qv) {
+    var v = sem.vec, dim = v.dim, best = {};
+    for (var e = 0; e < v.idx.length; e++) {
+      var dot = 0, off = e * dim;
+      for (var d = 0; d < dim; d++) dot += qv[d] * v.data[off + d];
+      dot /= 127;
+      var id = v.topics[v.idx[e]];
+      if (best[id] === undefined || dot > best[id]) best[id] = dot;
+    }
+    return Object.keys(best).map(function (id) { return { id: id, sim: best[id] }; })
+      .sort(function (a, b) { return b.sim - a.sim; });
+  }
+
+  function smartReply(kb, text, waited) {
+    var raw = String(text || "");
+    var quick = reply(kb, raw);
+    if (quick.id === "fallback" && kb.notSkills && sum(kb.notSkills, 1, norm(raw), norm(raw).trim().split(" "), norm(raw)) > 0)
+      return Promise.resolve(Object.assign(quick, { via: "words" }));
+    var ranked = score(kb, raw), s1 = ranked[0] ? ranked[0].s : 0;
+    if (/^(please )?(write|translate|compose|generate|solve|calculate|draw|sing|pretend|act as|code|book|order|buy)\b/.test(norm(raw).trim()))
+      return Promise.resolve(Object.assign(answer(kb, Object.assign({ id: "fallback" }, kb.fallback)), { via: "words" }));
+    var bare = norm(raw).trim().split(" ").length <= 1;
+    if (quick.id === "non-english" || (quick.id === "help" && bare) || s1 >= MEANING.HIGH) return Promise.resolve(Object.assign(quick, { via: "words" }));
+    if (!sem.embed) {
+      if (!sem.loading || waited) return Promise.resolve(Object.assign(quick, { via: "words" }));
+      return Promise.race([sem.loading, new Promise(function (r) { setTimeout(r, 4000); })])
+        .then(function () { return smartReply(kb, raw, true); });
+    }
+    var byId = {};
+    kb.topics.forEach(function (t) { byId[t.id] = t; });
+    var negative = sum(kb.negative, 1, norm(raw), norm(raw).trim().split(" "), norm(raw)) > 0;
+    return sem.embed(prep(raw)).then(function (qv) {
+      var list = meaningRank(qv).filter(function (r) { return byId[r.id] && !(negative && byId[r.id].brag); });
+      var top = list[0], next = list[1] || { sim: 0 };
+      var kwId = s1 >= 2 ? ranked[0].t.id : null;
+      var pick = null;
+      if (top && top.sim >= MEANING.STRONG && !(kwId && s1 >= MEANING.KEEP && kwId !== top.id)) pick = top.id;
+      else if (kwId) pick = kwId;
+      else if (top && top.sim >= MEANING.WEAK && top.sim - next.sim >= MEANING.MARGIN) pick = top.id;
+      if (!pick || pick === quick.id) return Object.assign(quick, { via: pick ? "words" : "none" });
+      return Object.assign(answer(kb, byId[pick]), { via: "meaning" });
+    }).catch(function () { return Object.assign(quick, { via: "words" }); });
+  }
+
   function store(kind) { try { return kind === "s" ? window.sessionStorage : window.localStorage; } catch (e) { return null; } }
 
   function loggingOff() {
@@ -133,7 +216,7 @@
       if (!kb.logUrl || loggingOff()) return;
       var body = JSON.stringify({
         q: String(question).slice(0, 300),
-        topic: result.id,
+        topic: result.id + (result.via === "meaning" ? " (meaning)" : ""),
         a: String(result.text).slice(0, 1000),
         fallback: result.id === "fallback" || result.id === "non-english",
         how: how === "chip" ? "tapped" : "typed",
@@ -146,5 +229,5 @@
     } catch (e) {}
   }
 
-  root.BotEngine = { reply: reply, score: score, norm: norm, log: log };
+  root.BotEngine = { reply: reply, smartReply: smartReply, loadMeaning: loadMeaning, setMeaning: setMeaning, meaningReady: function () { return !!sem.embed; }, prep: prep, tune: MEANING, score: score, norm: norm, log: log };
 })(typeof window !== "undefined" ? window : globalThis);

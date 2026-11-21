@@ -16,6 +16,9 @@ window.BOT_KB = {
     links: ["email", "whatsapp"],
     next: ["Quick intro", "Availability & location"]
   },
+  // Tools and skills she does not have: never guess an answer for these.
+  notSkills: ["figma", "tableau", "power bi", "powerbi", "photoshop", "salesforce", "illustrator", "canva", "sap$", "excel vba", "c++", "java$"],
+
   negative: ["drop$", "dropped$", "declin", "fell$", "fail", "mistake", "wrong", "worst", "bad$",
              "regret", "lost$", "lose$", "struggl", "setback", "weak", "didnt work", "did not work", "went wrong"],
 
@@ -63,7 +66,7 @@ window.BOT_KB = {
     },
     {
       id: "weakness", tier: 0,
-      strong: ["weakness", "weak point", "area of improvement", "areas of improvement", "needs improvement", "need to improve", "not good at", "bad at", "needs to improve", "improvement area", "should she work on", "should you work on", "work on herself", "should improve", "still learning", "improve on", "needs work"],
+      strong: ["weakness", "weak point", "area of improvement", "areas of improvement", "needs improvement", "need to improve", "not good at", "bad at", "needs to improve", "improvement area", "should she work on", "should you work on", "work on herself", "should improve", "still learning", "improve on", "needs work", "get better at", "better at", "achilles", "weak spot", "blind spot"],
       terms: ["weak", "shortcoming", "flaw", "blind spot", "struggle with"],
       text: "Anjali's instinct is to go deep on building before the problem is validated, because she genuinely enjoys the build. She saw it on ScamCheck, where she built link sandboxing, screenshot reading and WhatsApp support before testing the core idea with users. Now she writes down the riskiest assumption first and tests it the cheapest way she can (a few user conversations, a fake-door test or a manual version), and builds only once it holds.",
       links: ["scamcheck"],
@@ -71,7 +74,7 @@ window.BOT_KB = {
     },
     {
       id: "exit", tier: 0,
-      strong: ["why did you leave", "why did she leave", "why leave", "left reflexprep", "leave reflexprep", "3 months", "three months", "laid off", "layoff", "restructur", "only 3", "short stint", "career gap", "reflexprep end", "why did reflexprep", "discontinu", "role end", "looking for a change", "job change", "reason for leaving", "reason to leave", "short tenure", "tenure", "job end", "why is she not working", "why are you not working", "why did her last", "why are you leaving", "why is she leaving", "leaving$", "so short"],
+      strong: ["why did you leave", "why did she leave", "why leave", "left reflexprep", "leave reflexprep", "3 months", "three months", "laid off", "layoff", "restructur", "only 3", "short stint", "career gap", "reflexprep end", "why did reflexprep", "discontinu", "role end", "looking for a change", "job change", "reason for leaving", "reason to leave", "short tenure", "tenure", "job end", "why is she not working", "why are you not working", "why did her last", "why are you leaving", "why is she leaving", "leaving$", "so short", "shut her role", "role close", "role closed", "company shut", "shut down her"],
       terms: ["leave", "left$", "end$", "quit", "exit", "fired", "terminat", "let go", "ended", "gap", "why only"],
       weak: ["reflexprep"],
       text: "Anjali joined Reflexprep as Associate Product Manager in June 2026; in September the company restructured and the role was discontinued. In those three months she owned the Daily Quiz roadmap, grew FMGE signups 6x on a flat budget and built the payment recovery dashboard for sales. She can join immediately.",
@@ -80,7 +83,7 @@ window.BOT_KB = {
     },
     {
       id: "exit-internships", tier: 0,
-      strong: ["why did she leave", "why did you leave", "why leave", "leave neetprep", "left neetprep", "leave zaide", "left zaide", "neetprep end", "zaide end", "internship end", "internships end", "after neetprep", "after zaide"],
+      strong: ["why did she leave", "why did you leave", "why leave", "leave neetprep", "left neetprep", "leave zaide", "left zaide", "neetprep end", "zaide end", "internship end", "internships end", "after neetprep", "after zaide", "neetprep role", "neetprep stint", "zaide role", "zaide stint"],
       terms: ["leave", "left$", "end$", "ended"],
       weak: ["neetprep", "neet prep", "zaide", "internship"],
       text: "Both were internships. NEETprep ran from January to June 2026, and when it ended she moved straight into a full-time Associate Product Manager role at Reflexprep. Zaide.ai was a summer ML internship in 2025, during her degree.",
@@ -89,7 +92,7 @@ window.BOT_KB = {
     },
     {
       id: "salary", tier: 0,
-      strong: ["salary", "want to be paid", "ctc", "compensation", "expected pay", "pay expectation", "stipend", "package", "lpa", "how much does she expect", "how much do you expect", "how much would she", "how much will she", "how much is she asking", "asking for", "is she asking", "what is she asking"],
+      strong: ["salary", "want to be paid", "ctc", "compensation", "expected pay", "pay expectation", "stipend", "package", "lpa", "how much does she expect", "how much do you expect", "how much would she", "how much will she", "how much is she asking", "asking for", "is she asking", "what is she asking", "current drawing", "drawing$", "in hand salary", "was she paid", "paid at", "she paid", "her pay", "pay at"],
       terms: ["pay", "money", "current ctc", "expected ctc", "lakh", "remuneration"],
       text: "Anjali is flexible on compensation and happy to discuss it once there's a fit. The quickest way to start that conversation is a short email.",
       links: ["email"],
@@ -128,7 +131,7 @@ window.BOT_KB = {
     },
     {
       id: "disagreement", tier: 0,
-      strong: ["disagree", "disagreement", "conflict", "pushback", "push back", "say no", "difficult stakeholder", "convince", "persuade", "pushed back", "push back"],
+      strong: ["disagree", "disagreement", "conflict", "pushback", "push back", "say no", "difficult stakeholder", "convince", "persuade", "pushed back", "push back", "pushing back", "pushed back on", "push back on"],
       terms: ["argument", "influence", "negotiat", "work with engineer", "working with engineer", "work with design", "work with developer"],
       weak: ["stakeholder", "manager", "engineer"],
       text: "Her manager wanted the quiz automation system to be 100% proven before launch, after five or six full runs on the dev environment. Anjali's view, shaped by the earlier leaderboard incident, was that some issues only appear with real users at real volume, so the fastest route to a reliable system was to launch a solid version and improve it live. She walked him through what had been tested and what only live usage could show; they agreed to launch, and the system went on to help double quiz revenue.",
@@ -176,8 +179,8 @@ window.BOT_KB = {
     },
     {
       id: "roles", tier: 1,
-      strong: ["looking for", "what roles", "which roles", "kind of role", "type of role", "job search", "open to work", "product analyst", "business analyst", "targeting", "applying for", "apply for", "consider a", "analyst job", "analyst role"],
-      terms: ["roles", "position", "apm", "associate product", "product analyst", "business analyst", "analyst", "job", "opportunit", "hiring for", "interested in"],
+      strong: ["looking for", "what roles", "which roles", "kind of role", "type of role", "job search", "open to work", "product analyst", "business analyst", "targeting", "applying for", "apply for", "consider a", "analyst job", "analyst role", "apm positions", "apm roles", "open to apm", "apm position"],
+      terms: ["roles", "position", "apm", "associate product", "product analyst", "business analyst", "analyst", "job$", "opportunit", "hiring for", "interested in"],
       text: "Anjali is looking for full-time Associate Product Manager, Product Analyst and Business Analyst roles. Company size matters less to her than the role: she wants to own real outcomes and grow fast. She can join immediately and is open to relocating.",
       links: ["resume", "email"],
       next: ["Availability & location", "Why product management?", "Quick intro"]
@@ -224,7 +227,7 @@ window.BOT_KB = {
     },
     {
       id: "contact", tier: 1,
-      strong: ["contact", "reach her", "reach you", "get in touch", "email", "phone", "phone number", "contact number", "contact details", "mobile", "email id", "email address", "whatsapp", "call her", "call you", "her number", "your number", "phone no", "mobile no", "reach anjali", "reach out", "how to reach"],
+      strong: ["contact", "reach her", "reach you", "get in touch", "email", "phone", "phone number", "contact number", "contact details", "mobile", "email id", "email address", "whatsapp", "call her", "call you", "her number", "your number", "phone no", "mobile no", "reach anjali", "reach out", "how to reach", "linkedin", "her linkedin"],
       terms: ["mail", "call", "talk to", "speak to", "connect", "message her", "address", "schedule", "book a", "set up a", "meeting", "interview her"],
       text: "Email is best: anjali.verma20032004@gmail.com, and it's also the easiest way to set up a call. You can call or WhatsApp her on +91 82736 13578, or connect on LinkedIn.",
       links: ["email", "whatsapp", "linkedin"],
@@ -232,7 +235,7 @@ window.BOT_KB = {
     },
     {
       id: "resume", tier: 1,
-      strong: ["resume", "résumé", "cv", "linkedin", "github", "portfolio", "biodata", "bio data"],
+      strong: ["resume", "résumé", "cv", "github", "portfolio", "biodata", "bio data"],
       terms: ["pdf", "download"],
       text: "Here you go. Her résumé covers Reflexprep, NEETprep and Zaide.ai, plus her projects. Her code is on GitHub.",
       links: ["resume", "linkedin", "github"],
@@ -242,7 +245,7 @@ window.BOT_KB = {
       id: "intro", tier: 1, brag: true,
       weak: ["about her", "about anjali", "tell me about"],
       exact: ["about", "bio", "about me", "profile", "product", "pm", "tell me about her", "tell me about anjali", "about anjali", "about her", "tell me about yourself", "bio please", "short bio", "a short bio", "a short bio please"],
-      strong: ["quick intro", "tell me about yourself", "who is anjali", "who is she", "introduce", "summary", "summarise", "summarize", "overview", "product manager", "elevator pitch", "tldr", "who is this", "about the candidate", "describe her", "what does anjali do", "what does she do", "kind of pm", "sum her up", "her story", "talking about", "who is she", "anjali who", "bio$", "short bio", "brief about", "in brief", "who exactly", "all about", "is anjali", "who anjali is"],
+      strong: ["quick intro", "tell me about yourself", "who is anjali", "who is she", "introduce", "summary", "summarise", "summarize", "overview", "product manager", "elevator pitch", "tldr", "who is this", "about the candidate", "describe her", "what does anjali do", "what does she do", "kind of pm", "sum her up", "her story", "talking about", "who is she", "anjali who", "bio$", "short bio", "brief about", "in brief", "who exactly", "all about", "is anjali", "who anjali is", "describe her work", "her work like"],
       terms: ["intro", "background", "profile", "yourself", "herself"],
       text: "Anjali is an Associate Product Manager focused on growth and data, who loves building and shipping products that make a real difference for users. In 2026 she doubled monthly quiz revenue at Reflexprep, grew FMGE signups 6x on the same budget, and shipped a lead scoring model at NEETprep that scores 100K+ leads a month. She's looking for APM, Product Analyst or Business Analyst roles and can join immediately.",
       links: ["work", "resume"],
@@ -250,7 +253,7 @@ window.BOT_KB = {
     },
     {
       id: "strengths", tier: 1, brag: true,
-      strong: ["why hire", "why should we hire", "why should i hire", "strength", "superpower", "good at", "stand out", "unique", "what makes her", "what makes you", "why her", "why you", "good fit", "right fit", "sets her apart", "sets you apart", "fit for", "best quality", "qualities", "pick her", "choose her", "hire her", "right candidate", "best candidate"],
+      strong: ["why hire", "why should we hire", "why should i hire", "strength", "superpower", "good at", "stand out", "unique", "what makes her", "what makes you", "why her", "why you", "good fit", "right fit", "sets her apart", "sets you apart", "fit for", "best quality", "qualities", "pick her", "choose her", "hire her", "right candidate", "best candidate", "pick anjali", "over others", "over other candidates", "choose anjali"],
       terms: ["best at", "value", "bring to", "differen"],
       text: "Three things stand out. She finds the number that matters, like the SQL query that showed droppers convert best. She ships: a production ML model, an automated quiz system and a recovery dashboard she built herself. And she gets results from ownership rather than budget: 6x signups on the same spend is a good example.",
       links: ["work"],
@@ -266,7 +269,7 @@ window.BOT_KB = {
     },
     {
       id: "win", tier: 1, brag: true,
-      strong: ["biggest win", "proudest", "proud of", "achievement", "accomplishment", "best work", "best project", "greatest", "highlight", "most impactful", "impactful", "results has she", "results delivered", "what results", "quiz project", "best result", "best results", "biggest result"],
+      strong: ["biggest win", "proudest", "proud of", "achievement", "accomplishment", "best work", "best project", "greatest", "highlight", "most impactful", "impactful", "results has she", "results delivered", "what results", "quiz project", "best result", "best results", "biggest result", "quiz grow", "did the daily quiz grow", "quiz growth", "quiz players grow"],
       terms: ["win", "proud", "achiev", "accomplish", "impact", "success", "daily quiz", "quiz", "revenue", "doubled"],
       text: "Her biggest win is the Daily Quiz at Reflexprep. She turned a manual Google Forms quiz into a real product: she wrote the PRD, designed the UI, built the frontend, ran sprints and UAT, and took it to launch. Daily players grew from about 230 to 480, and monthly quiz revenue doubled.",
       links: ["quiz"],
@@ -324,7 +327,7 @@ window.BOT_KB = {
     },
     {
       id: "next", tier: 1,
-      strong: ["learn next", "want next", "next step", "5 years", "five years", "goal", "aspiration", "ambition", "future", "first pm role", "looking to learn", "grow into", "career goal", "career plan", "few years", "want to be in", "see herself", "see yourself"],
+      strong: ["learn next", "want next", "next step", "5 years", "five years", "goal", "aspiration", "ambition", "future", "first pm role", "looking to learn", "grow into", "career goal", "career plan", "few years", "want to be in", "see herself", "see yourself", "want to become", "wants to become", "kind of pm does she want"],
       terms: ["plan", "long term", "want to learn"],
       text: "She wants to own a product area end to end: find the problem, ship the solution and be accountable for the number it moves. In her first PM role she wants to go deeper on user research and on sharper prioritisation calls with engineering and design.",
       next: ["What roles is she looking for?", "Why product management?"]
@@ -346,8 +349,8 @@ window.BOT_KB = {
       next: ["What else did she do at NEETprep?", "Can she work with data?"]
     },
     {
-      id: "payments", tier: 1, brag: true,
-      strong: ["payment recovery", "dropped payment", "failed payment", "dropped transaction", "appsmith", "razorpay", "paytm", "dashboard", "payment migration", "payment dashboard", "payments dashboard", "failed transaction", "failed transactions"],
+      id: "payments", tier: 1,
+      strong: ["payment recovery", "dropped payment", "failed payment", "dropped transaction", "appsmith", "razorpay", "paytm", "dashboard", "payment migration", "payment dashboard", "payments dashboard", "failed transaction", "failed transactions", "payment failure", "payment failures", "failure dashboard", "payment failed"],
       terms: ["payment", "recover", "transaction", "internal tool", "migration"],
       text: "During Reflexprep's Paytm to Razorpay migration, sales had no single view of failed payments. Anjali built an Appsmith dashboard herself that surfaced 39 dropped transactions for follow-up, then automated it so the team could track failed payments and measure recovery.",
       links: ["payments"],
@@ -371,7 +374,7 @@ window.BOT_KB = {
     },
     {
       id: "reflexprep", tier: 1, brag: true,
-      strong: ["reflexprep", "reflex prep", "last company", "last job", "last role", "last employer", "last organisation", "last organization", "latest company", "latest role", "latest job", "latest employer", "most recent", "recent company", "recent job", "worked last", "work last", "last workplace", "most recent role", "recent role", "latest role", "last position", "latest position", "current position"],
+      strong: ["reflexprep", "reflex prep", "last company", "last job", "last role", "last employer", "last organisation", "last organization", "latest company", "latest role", "latest job", "latest employer", "most recent", "recent company", "recent job", "worked last", "work last", "last workplace", "most recent role", "recent role", "latest role", "last position", "latest position", "current position", "at reflexprep", "role at reflexprep"],
       terms: ["apm role", "associate product manager"],
       text: "At Reflexprep (Jun to Sep 2026) Anjali was a full-time Associate Product Manager. She owned the Daily Quiz roadmap and doubled monthly quiz revenue, grew FMGE signups 6x on a flat budget, and built the payment recovery dashboard for sales.",
       links: ["quiz", "fmge", "payments"],
@@ -381,7 +384,7 @@ window.BOT_KB = {
     {
       id: "experience", tier: 1,
       exact: ["experience", "exp"],
-      strong: ["work experience", "her experience", "work history", "employment", "previous companies", "past companies", "companies", "current company", "current role", "current job", "designation", "previous company", "previous companies", "previous employer", "former employer", "past employer", "which company", "which companies", "what company", "what companies", "companies worked", "organisations", "organizations", "employer$", "employers$", "where has she worked", "where have you worked", "years of", "total experience", "how much experience", "work experience", "has she worked", "worked before", "prior work", "prior experience", "past roles", "previous roles", "roles has she held", "roles held", "job history", "where work", "list her jobs", "her jobs", "jobs has she", "has she held", "held$", "done so far", "previous jobs", "past jobs", "professional experience", "professional background"],
+      strong: ["work experience", "her experience", "work history", "employment", "previous companies", "past companies", "companies", "current company", "current role", "current job", "designation", "previous company", "previous companies", "previous employer", "former employer", "past employer", "which company", "which companies", "what company", "what companies", "companies worked", "organisations", "organizations", "employer$", "employers$", "where has she worked", "where have you worked", "years of", "total experience", "how much experience", "work experience", "has she worked", "worked before", "prior work", "prior experience", "past roles", "previous roles", "roles has she held", "roles held", "job history", "where work", "list her jobs", "her jobs", "jobs has she", "has she held", "held$", "done so far", "previous jobs", "past jobs", "professional experience", "professional background", "all jobs", "all roles", "all her", "list of jobs", "list of companies", "jobs she", "jobs did", "job she had", "jobs she had", "has she had", "what all", "all experience", "every job", "every company", "all the companies", "all the jobs", "she did", "anjali did", "has she done", "jobs done", "her roles", "all her roles", "before reflexprep", "before the apm", "before her last", "before her apm", "earlier role", "earlier roles", "prior to", "do before", "did before", "role before", "roles before", "job before", "worked before reflexprep", "before neetprep", "after college", "after graduation", "after her degree", "do after college", "did after college", "after she graduated"],
       terms: ["your experience", "career", "jobs$", "job history", "worked at", "edtech", "startup", "internship", "intern$", "timeline"],
       weak: ["experience"],
       text: "Anjali has three roles behind her, in edtech and AI: full-time Associate Product Manager at Reflexprep (Jun to Sep 2026, until the company restructured), intern in the CEO's office for product and growth at NEETprep (Jan to Jun 2026), and ML intern in AI for radiology at Zaide.ai (Jun to Sep 2025). She's available now and can join immediately.",
@@ -406,7 +409,7 @@ window.BOT_KB = {
     },
     {
       id: "tools", tier: 1,
-      strong: ["tools", "tool stack", "tech stack", "stack", "software", "python", "code", "coding", "program", "technical"],
+      strong: ["tools", "tool stack", "tech stack", "stack", "software", "python", "code", "coding", "program", "technical", "programming language", "programming languages", "coding languages", "coding language"],
       terms: ["tool", "clevertap", "mixpanel", "aws", "cursor", "lovable", "claude", "skills", "skill set", "skillset", "technical skill", "hard skill", "key skill", "prompt engineering", "rag$", "evals", "ai guardrail", "unit economics", "llm product"],
       text: "Product and growth: discovery, PRDs, prioritisation, sprint planning and UAT, channel experiments, paid acquisition and unit economics. Data: SQL, funnel and cohort analysis, event tracking, CleverTap and Mixpanel. AI and build: LLM product design, prompt engineering, RAG, AI guardrails and evals, Appsmith, Python, AWS Lambda, Claude and Cursor. ScamCheck, CaseWise and her U-Net model are all her own builds.",
       links: ["projects", "github"],
@@ -430,7 +433,7 @@ window.BOT_KB = {
     },
     {
       id: "prd", tier: 1,
-      strong: ["prd", "product requirement", "spec$", "specs$", "user stor", "sprint", "uat", "agile", "roadmap"],
+      strong: ["prd", "product requirement", "spec$", "specs$", "user stor", "sprint", "uat", "agile", "roadmap", "agile teams", "agile team", "user stories"],
       terms: ["requirement", "documentation", "jira", "scrum"],
       text: "Yes. On the Daily Quiz she wrote the PRD (difficulty tiers and an exam-weighted topic schedule), designed the UI and built the frontend herself, ran sprint planning with engineering, and led UAT and delivery. Since then, her specs include what to measure and edge cases like data volume before development starts.",
       links: ["quiz"],
@@ -454,7 +457,7 @@ window.BOT_KB = {
     },
     {
       id: "projects", tier: 1, brag: true,
-      strong: ["things she built", "side project", "personal project", "built herself", "what has she built", "what have you built", "build anything", "built anything", "projects", "build products", "own products", "products herself", "products she built"],
+      strong: ["things she built", "side project", "personal project", "built herself", "what has she built", "what have you built", "build anything", "built anything", "projects", "build products", "own products", "products herself", "products she built", "side hustle", "side hustles", "side gig"],
       terms: ["project", "built", "build", "github", "demo", "product she"],
       text: "Two live products and an ML project, all her own builds. ScamCheck checks suspicious messages, links, UPI IDs and screenshots in English, Hindi or Hinglish. CaseWise is a privacy-first AI legal document assistant. And a U-Net model outlines brain tumours on MRI scans.",
       links: ["scamcheck", "casewise", "projects"],
@@ -503,7 +506,7 @@ window.BOT_KB = {
     },
     {
       id: "story-influence", tier: 1, brag: true,
-      strong: ["without authority", "influence people", "influenced", "get buy in", "buy in", "convince someone", "persuaded"],
+      strong: ["without authority", "influence people", "influenced", "get buy in", "buy in", "convince someone", "persuaded", "win over", "won over", "whatsapp admins", "win people over"],
       terms: ["stakeholder management", "partnership"],
       text: "For the FMGE test, Anjali needed WhatsApp group admins who had no reason to help Reflexprep. She led with what their members needed, free mock tests and exam content, rather than a sales pitch, and grew it to 20+ groups. That partnership grew signups 6x. Her takeaway: people say yes when the ask helps them first.",
       links: ["fmge"],
@@ -519,7 +522,7 @@ window.BOT_KB = {
     },
     {
       id: "story-pressure", tier: 1, brag: true,
-      strong: ["pressure", "tight deadline", "deadline", "urgent", "under stress", "stressful", "crunch", "short timeline"],
+      strong: ["pressure", "tight deadline", "deadline", "urgent", "under stress", "stressful", "crunch", "short timeline", "time is short", "short on time", "little time", "time crunch"],
       terms: ["stress", "fast", "quickly", "time crunch"],
       text: "During the Paytm to Razorpay migration, failed payments were slipping through every day. Anjali built the Appsmith dashboard in about two days so sales could start following up straight away, then automated it once it worked. It surfaced 39 dropped transactions for recovery. Her takeaway: under pressure, ship the version that stops the bleeding, then improve it.",
       links: ["payments"],
@@ -527,7 +530,7 @@ window.BOT_KB = {
     },
     {
       id: "story-initiative", tier: 1, brag: true,
-      strong: ["beyond your role", "beyond her role", "above and beyond", "initiative", "proactive", "nobody asked", "without being asked", "self driven", "self starter", "extra mile"],
+      strong: ["beyond your role", "beyond her role", "above and beyond", "initiative", "proactive", "nobody asked", "without being asked", "self driven", "self starter", "extra mile", "job description", "outside her role", "outside her job", "beyond her job"],
       terms: ["ownership", "beyond"],
       text: "Nobody asked Anjali to build the payment recovery dashboard. She noticed sales had no single view of failed payments during the migration, built it herself in Appsmith and then automated it. It surfaced 39 dropped transactions for follow-up.",
       links: ["payments"],
@@ -567,7 +570,7 @@ window.BOT_KB = {
     },
     {
       id: "improve-product", tier: 1,
-      strong: ["improve a product", "product you would improve", "product would you improve", "product to improve", "redesign", "what would you change in", "fix a product", "improve any product", "product shed improve", "product she would improve", "product youd improve", "product you would change"],
+      strong: ["improve a product", "product you would improve", "product would you improve", "product to improve", "redesign", "what would you change in", "fix a product", "improve any product", "product shed improve", "product she would improve", "product youd improve", "product you would change", "would she improve", "app would she improve", "she improve", "would she fix"],
       terms: ["improve", "product critique"],
       text: "PhysicsWallah's mock test report. It tells students their score but not what to do next, so Anjali would add a five-minute Mistake Review that ends in a 7-day study plan and a retest, turning every mock into action. Her full case study walks through the evidence and how she'd measure it.",
       links: ["pw"],
