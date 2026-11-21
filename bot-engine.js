@@ -7,6 +7,19 @@
       .replace(/\s+/g, " ").trim() + " ");
   }
 
+  var SYN = {
+    u: "you", ur: "your", r: "are", abt: "about", wat: "what", wht: "what", pls: "please", plz: "please",
+    yrs: "years", yr: "year", sal: "salary", exp: "experience", firm: "company", org: "company",
+    organisation: "company", organization: "company", co: "company", cmpny: "company", stint: "role",
+    wfo: "work from office", wfh: "work from home", ph: "phone", no: "no", num: "number",
+    kaun: "who", kya: "what", kaha: "where", kahan: "where", kaam: "work", kitna: "how much", kitni: "how much",
+    kyun: "why", kyu: "why", kamzori: "weakness", naukri: "job", padhai: "education", umar: "age"
+  };
+
+  function expand(q) {
+    return " " + q.trim().split(" ").map(function (w) { return SYN.hasOwnProperty(w) ? SYN[w] : w; }).join(" ") + " ";
+  }
+
   function lev(a, b) {
     if (Math.abs(a.length - b.length) > 1) return 2;
     var prev = [], cur, i, j;
@@ -20,14 +33,14 @@
     }
     return prev[b.length];
   }
-  function hit(term, q, toks) {
+  function hit(term, q, toks, q0) {
     var exact = term.charAt(term.length - 1) === "$";
     var t = exact ? term.slice(0, -1) : norm(term).trim();
     if (!t) return 0;
-    if (t.indexOf(" ") > -1) return q.indexOf(" " + t) > -1 ? 1 : 0;
+    if (t.indexOf(" ") > -1) return (q.indexOf(" " + t) > -1 || (q0 && q0.indexOf(" " + t) > -1)) ? 1 : 0;
     for (var i = 0; i < toks.length; i++) {
       var w = toks[i];
-      if (exact || t.length <= 3) { if (w === t) return 1; continue; }
+      if (exact || t.length <= 3) { if (w === t || (!exact && w === t + "s")) return 1; continue; }
       if (w.indexOf(t) === 0) return 1;
     }
     if (exact || t.length < 6) return 0;
@@ -38,9 +51,9 @@
     return 0;
   }
 
-  function sum(list, w, q, toks) {
+  function sum(list, w, q, toks, q0) {
     var s = 0;
-    (list || []).forEach(function (term) { s += hit(term, q, toks) * w; });
+    (list || []).forEach(function (term) { s += hit(term, q, toks, q0) * w; });
     return s;
   }
 
@@ -54,13 +67,13 @@
   }
 
   function score(kb, text) {
-    var q = norm(text);
-    var toks = q.trim() ? q.trim().split(" ") : [];
-    var negative = sum(kb.negative, 1, q, toks) > 0;
+    var q0 = norm(text), q = expand(q0);
+    var toks = (q.trim() + " " + q0.trim()).trim().split(" ").filter(function (w, i, a) { return w && a.indexOf(w) === i; });
+    var negative = sum(kb.negative, 1, q, toks, q0) > 0;
     return kb.topics.map(function (t, i) {
-      var strong = sum(t.strong, 3, q, toks);
-      var s = strong + sum(t.terms, 2, q, toks) + sum(t.weak, 1, q, toks);
-      if (t.exact && t.exact.indexOf(q.trim()) > -1) s += 3;
+      var strong = sum(t.strong, 3, q, toks, q0);
+      var s = strong + sum(t.terms, 2, q, toks, q0) + sum(t.weak, 1, q, toks, q0);
+      if (t.exact && (t.exact.indexOf(q.trim()) > -1 || t.exact.indexOf(norm(text).trim()) > -1)) s += 3;
       if (t.tier === 0 && strong > 0) s += 4;
       if (t.tier === 2) s -= 1;
       if (t.brag && negative) s -= 2;
