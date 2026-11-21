@@ -178,7 +178,7 @@ window.BOT_KB = {
       id: "current", tier: 1,
       strong: ["doing now", "doing right now", "currently doing", "up to now", "up to these days", "these days", "since september", "since reflexprep", "after reflexprep", "what is she working on", "what are you working on", "working on now", "currently working on", "right now"],
       terms: ["currently", "nowadays", "present"],
-      text: "Since September, Anjali has been writing product case studies (PhysicsWallah, Shiprocket and Blinkit), improving ScamCheck and CaseWise with feedback from users, competing in Google Cloud's AI Builders Cup, and interviewing for APM and product analyst roles. She treats the job search like a product: shipping work that shows how she thinks.",
+      text: "Since September, Anjali has been writing product case studies (PhysicsWallah, Shiprocket and Blinkit), improving ScamCheck and CaseWise with feedback from users, and interviewing for APM and product analyst roles. She treats the job search like a product: shipping work that shows how she thinks.",
       links: ["cases", "projects"],
       next: ["Her case studies?", "Things she built", "Availability & location"]
     },
@@ -218,7 +218,7 @@ window.BOT_KB = {
       id: "resume", tier: 1,
       strong: ["resume", "résumé", "cv", "linkedin", "github", "portfolio"],
       terms: ["pdf", "download"],
-      text: "Here you go. Her résumé covers Reflexprep, NEETprep and Zaide.ai, plus her projects and hackathons. Her code is on GitHub.",
+      text: "Here you go. Her résumé covers Reflexprep, NEETprep and Zaide.ai, plus her projects. Her code is on GitHub.",
       links: ["resume", "linkedin", "github"],
       next: ["Quick intro", "Availability & location"]
     },
@@ -284,14 +284,14 @@ window.BOT_KB = {
       id: "education", tier: 1,
       strong: ["biotech", "degree", "education", "college", "university", "nit", "jalandhar", "studied", "study", "b tech", "btech", "graduat", "qualification", "qualif", "passing year", "pass out", "passout", "batch$"],
       terms: ["major", "branch", "academic", "school"],
-      text: "Anjali has a B.Tech in Biotechnology from NIT Jalandhar (2022 to 2026, degree in November 2026). It trained her to work with data, run experiments and reason from evidence, and she spent much of college on hackathons, the E-Cell and building things. Product was the natural next step: the same habit of testing ideas, applied to real products and real people.",
+      text: "Anjali has a B.Tech in Biotechnology from NIT Jalandhar (2022 to 2026, degree in November 2026). It trained her to work with data, run experiments and reason from evidence, and she spent much of college on the E-Cell and building things. Product was the natural next step: the same habit of testing ideas, applied to real products and real people.",
       links: ["about"],
-      next: ["Why product management?", "Hackathons?"]
+      next: ["Why product management?", "Things she built"]
     },
     {
       id: "grades", tier: 1,
       strong: ["cgpa", "gpa", "sgpa", "grade", "marks", "percentage", "score in college", "academic score", "class rank", "topper"],
-      terms: ["result", "academic record"],
+      terms: ["academic record"],
       weak: ["college"],
       text: "Anjali is happy to share her academic details directly. Drop her an email, and in the meantime her work and projects are the best picture of what she can do.",
       links: ["email", "work"],
@@ -450,14 +450,6 @@ window.BOT_KB = {
       text: "She's written three product case studies. PhysicsWallah: a mock test report that tells students what to do next, built from 840 reviews and a full mock she took herself. Shiprocket: who pays when a courier fakes a delivery attempt, from 169 coded seller reviews. Blinkit: why people keep it for groceries only, from 600 reviews. Start with PW.",
       links: ["pw", "shiprocket", "blinkit"],
       next: ["How does she prioritise?", "Things she built"]
-    },
-    {
-      id: "hackathons", tier: 1, brag: true,
-      strong: ["hackathon", "techothon", "smart india", "sih", "google cloud", "competition", "tero", "crop"],
-      terms: ["award", "prize", "won", "winner", "contest", "challenge"],
-      text: "Anjali won 1st place at Techothon, NIT Jalandhar's hackathon, in a team of two, with a working prototype of Tero, which predicts crop yield per acre from soil, rainfall, temperature and other factors. She qualified through her college round for Smart India Hackathon 2025, and she's competing in Google Cloud's AI Builders Cup, with results pending.",
-      links: ["about"],
-      next: ["Things she built", "Her degree and background?"]
     },
 
     {
